@@ -217,7 +217,6 @@ a:visited{
 }
 
 .current li.team {
-    width: 100%;
 	background-color: rgb(240, 239, 239);
 	opacity: 1;
 }
