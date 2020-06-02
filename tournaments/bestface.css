@@ -178,6 +178,16 @@ a:visited{
 	position: relative;
 }
 
+.winner {
+	padding: 0 5px;
+	margin: 3px 0;
+	height: 25px;
+	line-height: 25px;
+	white-space: nowrap;
+	overflow: hidden;
+	position: relative;
+}
+
 .round-two .matchup {
 	margin: 0;
 	height: 20px;
@@ -218,6 +228,11 @@ a:visited{
 
 .current li.team {
 	background-color: rgb(240, 239, 239);
+	opacity: 1;
+}
+
+.current li.winner {
+	background-color: #67acd1;
 	opacity: 1;
 }
 
