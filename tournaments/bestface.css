@@ -12,6 +12,7 @@ body {
 	overflow: hidden;
 	color: #fcfcfc;
 }
+P { text-align: center }
 
 .hero h1 {
 	font-family: 'Holtwood One SC', serif;
@@ -139,7 +140,7 @@ body {
 .matchup {
 	margin: 0;
 	width: 100%;
-	padding: 10px 0;
+	padding: 5px 0;
 	height: 60px;
 	-webkit-transition: all 0.2s;
 	transition: all 0.2s;
@@ -179,20 +180,20 @@ a:visited{
 
 .round-two .matchup {
 	margin: 0;
-	height: 60px;
-	padding: 50px 0;
+	height: 20px;
+	padding: 70px 0;
 }
 
 .round-three .matchup {
 	margin: 0;
-	height: 60px;
-	padding: 130px 0;
+	height: 35px;
+	padding: 145px 0;
 }
 
 .quarterfinals .matchup {
 	margin: 0;
 	height: 60px;
-	padding: 290px 0;
+	padding: 300px 0;
 }
 
 .round-details {
@@ -201,7 +202,7 @@ a:visited{
 	color: #2C7399;
 	text-transform: uppercase;
 	text-align: center;
-	height: 15px;
+	height: 30px;
 }
 
 .champion li,
