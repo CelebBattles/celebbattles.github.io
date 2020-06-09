@@ -178,7 +178,7 @@ a:visited{
 	position: relative;
 }
 
-.winner {
+.loser {
 	padding: 0 5px;
 	margin: 3px 0;
 	height: 25px;
@@ -231,9 +231,13 @@ a:visited{
 	opacity: 1;
 }
 
-.current li.winner {
-	background-color: #67acd1;
+.current li.loser {
+	background-color: rgb(240, 239, 239);
 	opacity: 1;
+}
+
+.current li.loser a {
+	color: rgb(126, 126, 126);
 }
 
 .vote-options {
