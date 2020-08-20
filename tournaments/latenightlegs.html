@@ -9,7 +9,21 @@
     <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Istok+Web|Roboto+Condensed:700' rel='stylesheet' type='text/css'>
     <title>CelebBattles Late Night Legs 2020</title>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var bgArray = [
+                'https://i.imgur.com/DfdpVxh.jpg', 
+                'https://i.imgur.com/7sdRRYb.jpg'
+            ];
+            var bg = bgArray[Math.floor(Math.random() * bgArray.length)];
+            $('#animatedBackground').css('background', "url(" + bg + ")");
+            $('#animatedBackground').css('background-size', "auto 300px");
+        }); 
+    </script>
  </head>
+
  <body>
     <header class="hero">
        <div class="hero-wrap">
