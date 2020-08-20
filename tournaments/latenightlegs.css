@@ -213,6 +213,15 @@ a:visited{
 	height: 30px;
 }
 
+.group-details {
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 12px;
+	color: #2C7399;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+
 .champion li,
 .round li {
 	background-color: #fff;
@@ -394,6 +403,9 @@ a:visited{
 		margin-bottom: -10px;
 	}
 	.round-details {
+		font-size: 90%;
+	}
+	.group-details {
 		font-size: 90%;
 	}
 	.hero-wrap {
