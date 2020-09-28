@@ -221,6 +221,12 @@ a:visited{
 	text-align: center;
 }
 
+.name-details {
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 13px;
+	color: #2C7399;
+	text-align: center;
+}
 
 .champion li,
 .round li {
