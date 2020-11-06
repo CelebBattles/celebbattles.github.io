@@ -11,6 +11,8 @@ body {
 	text-align: center !important;
 	overflow: hidden !important;
 	color: #fcfcfc !important;
+	border-bottom: 4px outset #d2e0e6;
+	background-color: #002c56;
 }
 
 P { text-align: center }
