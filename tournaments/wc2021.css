@@ -28,7 +28,7 @@ P { text-align: center }
 .hero p {
 	font-family: 'Abel', sans-serif !important;
 	text-transform: uppercase !important;
-	color: #FFD700 !important;
+	color: #ff2f2f !important;
 	letter-spacing: 6px !important;
 	text-shadow: 0 0 12px rgba(155, 94, 94, 0.5) !important;
 	font-size: 1.2em !important;
