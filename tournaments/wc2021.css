@@ -155,6 +155,30 @@ img {vertical-align: middle;}
   animation-duration: 1.5s;
 }
 
+/* Table */
+table {
+	/* width: 800px; */
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  th,
+  td {
+	background-color: rgba(255, 255, 255, 0.2);
+	color: #fff;
+	text-align: left !important;
+  }
+  th {
+	text-align: left;
+  }
+  thead th {
+	background-color: #ff2f2f;
+  }
+  tbody td {
+	position: relative;
+  }
+  
+
 @-webkit-keyframes fade {
   from {opacity: .4} 
   to {opacity: 1}

@@ -71,10 +71,9 @@
         <div class="mySlides">
           <img src="https://i.imgur.com/j9ajh5J.png" style="width:100%">
         </div>
-        
+
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        
     </div>
     
     <br>
@@ -90,32 +89,195 @@
         <span class="dot" onclick="currentSlide(8)"></span>
     </div>
 
+    <br>
+
+    <div class="container">
+      <p style="color: #ff2f2f; font-size: 2em; font-family: 'Holtwood One SC', serif">Preliminary Rounds</p>
+      <div class="row justify-content-center">
+        <div class="col-sm">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Country</th>
+                <th>Points</th>
+                <th>TB</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>USA</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>ITA</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>KOR</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>BRA</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-sm">
+          <table class="table text-center">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Country</th>
+                <th>Points</th>
+                <th>TB</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>ENG</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>FRA</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>CHN</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>MEX</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <table class="table text-center">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Country</th>
+                <th>Points</th>
+                <th>TB</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>AUS</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>HUN</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>IND</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>SPA</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-sm">
+          <table class="table text-center">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Country</th>
+                <th>Points</th>
+                <th>TB</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>CAN</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>ISR</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>JAP</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>SWE</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slideshow script -->
     <script>
-        var slideIndex = 1;
-        showSlides(slideIndex);
-        
-        function plusSlides(n) {
-          showSlides(slideIndex += n);
+      var slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides(slideIndex += n);
+      }
+
+      function currentSlide(n) {
+        showSlides(slideIndex = n);
+      }
+
+      function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
         }
-        
-        function currentSlide(n) {
-          showSlides(slideIndex = n);
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
         }
-        
-        function showSlides(n) {
-          var i;
-          var slides = document.getElementsByClassName("mySlides");
-          var dots = document.getElementsByClassName("dot");
-          if (n > slides.length) {slideIndex = 1}    
-          if (n < 1) {slideIndex = slides.length}
-          for (i = 0; i < slides.length; i++) {
-              slides[i].style.display = "none";  
-          }
-          for (i = 0; i < dots.length; i++) {
-              dots[i].className = dots[i].className.replace(" active", "");
-          }
-          slides[slideIndex-1].style.display = "block";  
-          dots[slideIndex-1].className += " active";
-        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+      }
     </script>
 </body>
