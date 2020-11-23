@@ -20,12 +20,39 @@
     <title>CelebBattles World Cup 2021</title>
     <link rel="icon" type="image/png" href="favicon.png"/>
 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+          var imgArray = [
+              'https://i.imgur.com/bnsLPtZ.png', // USA
+              'https://i.imgur.com/EjQQMb0.png', // Can
+              'https://i.imgur.com/urBW9LQ.png', // Ind
+              'https://i.imgur.com/LTrc7tn.png', // Aus
+              'https://i.imgur.com/oxcg6Zz.png', // Eng
+              'https://i.imgur.com/rtSLhMu.png', // Swe
+              'https://i.imgur.com/EY4KFK8.png', // Kor
+              'https://i.imgur.com/j9ajh5J.png'  // Isr
+          ];
+          shuffle(imgArray)
+          $('#img1').attr('src', imgArray[0]);
+          $('#img2').attr('src', imgArray[1]);
+          $('#img3').attr('src', imgArray[2]);
+          $('#img4').attr('src', imgArray[3]);
+          $('#img5').attr('src', imgArray[4]);
+          $('#img6').attr('src', imgArray[5]);
+          $('#img7').attr('src', imgArray[6]);
+          $('#img8').attr('src', imgArray[7]);
+      }); 
+    </script>
  </head>
 
  <body>
@@ -41,35 +68,35 @@
 
     <div class="slideshow-container"> 
         <div class="mySlides">
-          <img src="https://i.imgur.com/bnsLPtZ.png" title="Team USA: Alexandra Daddario, Scarlett Johansson, Victoria Justice, Taylor Swift"style="width:100%">
+          <img id="img1" style="width:100%">
         </div>
         
         <div class="mySlides">
-          <img src="https://i.imgur.com/EjQQMb0.png" style="width:100%">
+          <img id="img2" style="width:100%">
         </div>
 
         <div class="mySlides">
-            <img src="https://i.imgur.com/41U1dWq.png" style="width:100%">
+          <img id="img3" style="width:100%">
         </div>
 
         <div class="mySlides">
-            <img src="https://i.imgur.com/LTrc7tn.png" style="width:100%">
+          <img id="img4" style="width:100%">
         </div>
 
         <div class="mySlides">
-          <img src="https://i.imgur.com/oxcg6Zz.png" style="width:100%">
+          <img id="img5" style="width:100%">
         </div>
 
         <div class="mySlides">
-          <img src="https://i.imgur.com/rtSLhMu.png" style="width:100%">
+          <img id="img6" style="width:100%">
         </div>
 
         <div class="mySlides">
-          <img src="https://i.imgur.com/EY4KFK8.png" style="width:100%">
+          <img id="img7" style="width:100%">
         </div>
 
         <div class="mySlides">
-          <img src="https://i.imgur.com/j9ajh5J.png" style="width:100%">
+          <img id="img8" style="width:100%">
         </div>
 
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -77,7 +104,7 @@
     </div>
     
     <br>
-        
+
     <div style="text-align:center">
         <span class="dot" onclick="currentSlide(1)"></span> 
         <span class="dot" onclick="currentSlide(2)"></span> 
@@ -92,16 +119,16 @@
     <br>
 
     <div class="container">
-      <p class="round-title">Group Stage</p>
+      <p class="round-title">GROUP STAGE</p>
       <div class="row justify-content-center">
         <div class="col-sm">
           <p class="table-title">Group A</p>
           <table class="table">
             <thead>
               <tr>
-                <th>Rank</th>
-                <th>Country</th>
-                <th>Points</th>
+                <th>RANK</th>
+                <th>COUNTRY</th>
+                <th>POINTS</th>
                 <th>TB</th>
               </tr>
             </thead>
@@ -138,9 +165,9 @@
           <table class="table text-center">
             <thead>
               <tr>
-                <th>Rank</th>
-                <th>Country</th>
-                <th>Points</th>
+                <th>RANK</th>
+                <th>COUNTRY</th>
+                <th>POINTS</th>
                 <th>TB</th>
               </tr>
             </thead>
@@ -179,9 +206,9 @@
           <table class="table text-center">
             <thead>
               <tr>
-                <th>Rank</th>
-                <th>Country</th>
-                <th>Points</th>
+                <th>RANK</th>
+                <th>COUNTRY</th>
+                <th>POINTS</th>
                 <th>TB</th>
               </tr>
             </thead>
@@ -218,9 +245,9 @@
           <table class="table text-center">
             <thead>
               <tr>
-                <th>Rank</th>
-                <th>Country</th>
-                <th>Points</th>
+                <th>RANK</th>
+                <th>COUNTRY</th>
+                <th>POINTS</th>
                 <th>TB</th>
               </tr>
             </thead>
@@ -259,7 +286,7 @@
 
     <!-- Knockout bracket -->
     <div class="container">
-      <p class="round-title">Knockout Stage</p>
+      <p class="round-title">KNOCKOUT STAGE</p>
       <section id="bracket">
         <div class="container">
           <div class="split split-one">
@@ -350,6 +377,21 @@
         }
         slides[slideIndex-1].style.display = "block";  
         dots[slideIndex-1].className += " active";
+      }
+
+      /**
+       * Shuffles array in place.
+       * @param {Array} a items An array containing the items.
+       */
+      function shuffle(a) {
+        var j, x, i;
+        for (i = a.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            x = a[i];
+            a[i] = a[j];
+            a[j] = x;
+        }
+        return a;
       }
     </script>
 </body>
