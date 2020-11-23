@@ -25,6 +25,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+    <!-- Script to randomize the starting element of the slideshow -->
     <script type="text/javascript">
       $(document).ready(function() {
           var imgArray = [
@@ -37,15 +38,14 @@
               'https://i.imgur.com/EY4KFK8.png', // Kor
               'https://i.imgur.com/j9ajh5J.png'  // Isr
           ];
-          shuffle(imgArray)
-          $('#img1').attr('src', imgArray[0]);
-          $('#img2').attr('src', imgArray[1]);
-          $('#img3').attr('src', imgArray[2]);
-          $('#img4').attr('src', imgArray[3]);
-          $('#img5').attr('src', imgArray[4]);
-          $('#img6').attr('src', imgArray[5]);
-          $('#img7').attr('src', imgArray[6]);
-          $('#img8').attr('src', imgArray[7]);
+          var n = 8 // Number of countries
+          var i = Math.floor(Math.random() * n);
+          var ctr = 0
+          while (ctr < n) {
+            $('#img' + ctr).attr('src', imgArray[i%n]);
+            i++
+            ctr++ 
+          }
       }); 
     </script>
  </head>
@@ -63,9 +63,13 @@
 
     <div class="slideshow-container"> 
         <div class="mySlides">
-          <img id="img1" style="width:100%">
+          <img id="img0" style="width:100%">
         </div>
         
+        <div class="mySlides">
+          <img id="img1" style="width:100%">
+        </div>
+
         <div class="mySlides">
           <img id="img2" style="width:100%">
         </div>
@@ -88,10 +92,6 @@
 
         <div class="mySlides">
           <img id="img7" style="width:100%">
-        </div>
-
-        <div class="mySlides">
-          <img id="img8" style="width:100%">
         </div>
 
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -372,21 +372,6 @@
         }
         slides[slideIndex-1].style.display = "block";  
         dots[slideIndex-1].className += " active";
-      }
-
-      /**
-       * Shuffles array in place.
-       * @param {Array} a items An array containing the items.
-       */
-      function shuffle(a) {
-        var j, x, i;
-        for (i = a.length - 1; i > 0; i--) {
-            j = Math.floor(Math.random() * (i + 1));
-            x = a[i];
-            a[i] = a[j];
-            a[j] = x;
-        }
-        return a;
       }
     </script>
 </body>
