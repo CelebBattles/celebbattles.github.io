@@ -215,6 +215,20 @@ a:visited{
 	height: 30px;
 }
 
+.info {
+	font-family: 'Secular One', sans-serif;
+	font-size: 18px;
+	color: #fff;
+	text-align: center;
+	height: 30px;
+}
+
+.ruler {
+	border: 0; 
+	height: 3px; 
+	background-image: linear-gradient(to right, #000, #ff2f2f, #000);
+}
+
 .name-details {
 	font-family: 'Secular One', sans-serif;
 	font-size: 13px;

@@ -25,7 +25,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <!-- Script to randomize the starting element of the slideshow -->
+    <!-- Randomize the starting image in the slideshow -->
     <script type="text/javascript">
       $(document).ready(function() {
           var imgArray = [
@@ -38,13 +38,13 @@
               'https://i.imgur.com/EY4KFK8.png', // Kor
               'https://i.imgur.com/j9ajh5J.png'  // Isr
           ];
-          var n = 8 // Number of countries
+          var n = 8; // Number of countries
           var i = Math.floor(Math.random() * n);
-          var ctr = 0
+          var ctr = 0;
           while (ctr < n) {
             $('#img' + ctr).attr('src', imgArray[i%n]);
-            i++
-            ctr++ 
+            i++;
+            ctr++;
           }
       }); 
     </script>
@@ -59,7 +59,6 @@
             <img class="cb-logo" src="download-b.png" alt="logo"/>
        </div>
     </header>
-
 
     <div class="slideshow-container"> 
         <div class="mySlides">
@@ -112,7 +111,11 @@
     </div>
 
     <br>
+    
+    <div class="info">TOURNAMENT SCHEDULE: <a href="https://celebbattles.github.io/tournaments/wc2021/info" target="_blank">/wc2021/info</a></div>
 
+    <hr class="ruler">
+    
     <div class="container">
       <p class="round-title">GROUP STAGE</p>
       <div class="row justify-content-center">
@@ -277,7 +280,7 @@
       </div>
     </div>
 
-    <br>
+    <hr class="ruler">
 
     <!-- Knockout bracket -->
     <div class="container">
