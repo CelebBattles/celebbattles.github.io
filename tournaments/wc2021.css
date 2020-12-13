@@ -394,7 +394,18 @@ table {
   tbody td {
 	position: relative;
   }
-  
+
+/* Info Page */
+.flag-td{
+	text-align: center !important;
+	width: 150px !important;
+}
+.name-td{
+	width: 300px !important;
+}
+.flag-logo{
+	width: 60px
+}
 
 @-webkit-keyframes fade {
   from {opacity: .4} 
