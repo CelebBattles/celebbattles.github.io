@@ -177,7 +177,10 @@ ul li a {
 
 a:visited{
     color:black;
-  }
+}
+a.info-link:visited{
+    color: blue;
+}
 
 .team {
 	padding: 0 5px;
