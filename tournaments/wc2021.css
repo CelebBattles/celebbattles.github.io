@@ -74,26 +74,28 @@ P { text-align: center }
 .round-title {
 	color: #ff2f2f;
 	font-size: 2em;
-	font-family: 'Secular One', sans-serif;
+	font-family: Montserrat;
+	font-weight: bold;
 }
 
 .table-title {
 	color: #ff2f2f;
-	font-family: 'Secular One', sans-serif;
+	font-family: Montserrat;
 	font-size: 16px;
 	text-transform: uppercase;
 	text-align: center;
 	height: 30px;
 	margin-bottom: 6px;
+	font-weight: bold;
 }
 
 .table thead th {
-    font-family: 'Secular One', sans-serif;
+    font-family: Montserrat	;
     font-weight: normal;
 }
 
 .table td, .table th {
-	font-family: 'Secular One', sans-serif;
+	font-family: Montserrat;
 	font-weight: normal;
 }
 
@@ -210,7 +212,7 @@ a.info-link:visited{
 }
 
 .round-details {
-	font-family: 'Secular One', sans-serif;
+	font-family: Montserrat;
 	font-size: 16px;
 	color: #fff;
 	text-transform: uppercase;
@@ -219,11 +221,10 @@ a.info-link:visited{
 }
 
 .info {
-	font-family: 'Secular One', sans-serif;
-	font-size: 18px;
+	font-family: Montserrat;
+	font-size: 17px;
 	color: #fff;
 	text-align: center;
-	height: 30px;
 }
 
 .ruler {
@@ -233,7 +234,7 @@ a.info-link:visited{
 }
 
 .name-details {
-	font-family: 'Secular One', sans-serif;
+	font-family: Montserrat;
 	font-size: 13px;
 	color: #2C7399;
 	text-align: center;
