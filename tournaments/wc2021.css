@@ -158,10 +158,10 @@ P { text-align: center }
 	-webkit-flex-direction: column;
 	flex-direction: column;
 	width: 95%;
-	width: 30.8333%\9;
 }
 
 .matchup {
+	font-weight: bold;
 	margin: 0;
 	width: 100%;
 	padding: 5px 0;
