@@ -15,6 +15,13 @@ body {
 	background-color: #003066;
 }
 
+.final-winner {
+	position: relative !important;
+	text-align: center !important;
+	overflow: hidden !important;
+	color: #fcfcfc !important;
+}
+
 P { text-align: center }
 
 .hero h1 {
