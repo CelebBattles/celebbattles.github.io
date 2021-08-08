@@ -3,7 +3,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168647005-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         gtag('config', 'UA-168647005-1');
@@ -20,12 +20,21 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link href="javascript:void(0);" rel="stylesheet">
 
+    <!-- Vendor CSS Files -->
+    <link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
     <title>CelebBattles Hottest Underrated Celeb</title>
-    <link rel="icon" type="image/png" href="favicon.png"/>
+    <link rel="icon" type="image/png" href="favicon.png" />
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             var bgArray = [
                 'https://i.imgur.com/IOdKyfx.jpg',
                 'https://i.imgur.com/HOo1Cpo.jpg',
@@ -34,362 +43,403 @@
             var bg = bgArray[Math.floor(Math.random() * bgArray.length)];
             $('#animatedBackground').css('background', "url(" + bg + ")");
             $('#animatedBackground').css('background-size', "auto 300px");
-        }); 
+        });
     </script>
- </head>
+</head>
 
- <body>
-    <header class="hero">
-       <div class="hero-wrap">
-            <p class="intro" id="intro">CelebBattles</p>
-            <h1 id="headline">Hottest Underrated Celeb</h1>
-            <img src="download2.png" alt="cb-logo" style="width:75px;height:75px;padding-bottom:10px">
-            <div id="animatedBackground"></div>
-       </div>
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="logo">
+                <h1 class="text-light"><a href="../index.html"><span>CelebBattles</span></a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html"><img src="../assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            </div>
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="active" href="../index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#"><span>Tournaments</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="https://www.reddit.com/r/CelebBattles/comments/brdyyl">Best Legs</a></li>
+                            <li><a href="https://www.reddit.com/r/CelebBattles/comments/ccskuu/">Best Nude Debut</a></li>
+                            <li><a href="https://www.reddit.com/r/CelebBattles/comments/disw6g">Best Bikini Body</a></li>
+                            <li><a href="https://www.reddit.com/r/CelebBattles/comments/fkebom">Hottest TV Star</a></li>
+                            <li><a href="https://celebbattles.github.io/tournaments/bestface">Best Face</a></li>
+                            <li><a href="https://celebbattles.github.io/tournaments/latenightlegs">Late Night Legs</a></li>
+                            <li><a href="https://celebbattles.github.io/tournaments/wc2021">Celeb World Cup 2021</a></li>
+                            <li><a href="https://celebbattles.github.io/tournaments/underrated">Hottest Underrated Celeb</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+            <!-- .navbar -->
+        </div>
     </header>
-    <section id="bracket">
-       <div class="container">
-          <div class="split split-one">
-             <div class="round round-one current">
-                <div class="round-details">Round 1<br/></div>
-                <p class="group-details">Group A</p>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2p17b/" target="_blank">Evangeline Lilly<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2p17b/" target="_blank">Amy Adams<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2p17b/" target="_blank">Naomi Scott<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2p0vd/" target="_blank">Jessica Biel<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2p0vd/" target="_blank">Ariana Grande<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2p0vd/" target="_blank">Danielle Sharp<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2p12h/" target="_blank">Anya Taylor-Joy<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2p12h/" target="_blank">Miranda Kerr<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2p12h/" target="_blank">Lucy Pinder<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2oxah/" target="_blank">Kate Mara<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2oxah/" target="_blank">Brooklyn Decker<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2oxah/" target="_blank">Audrey Hepburn<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <p class="group-details">Group B</p>
-                <ul class="matchup">
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b5kx" target="_blank">Allison Stokke<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b5kx" target="_blank">Kaley Cuoco<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b5kx" target="_blank">Julia Liepa<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b65a" target="_blank">Olivia Munn<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b65a" target="_blank">Megan Fox<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b65a" target="_blank">Dove Cameron<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b5wx" target="_blank">Michelle Trachtenberg<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b5wx" target="_blank">Emily Blunt<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b5wx" target="_blank">Jennifer Aniston<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b61a" target="_blank">Caylee Cowan<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b61a" target="_blank">Isla Fisher<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b61a" target="_blank">Bryce Dallas Howard<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <p class="group-details">Group C</p>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xy52" target="_blank">Kristen Bell<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xy52" target="_blank">Sarah Shahi<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xy52" target="_blank">Chloe Grace Moretz<span class="score">&nbsp;</span></a></li>
-                 </ul>
-                 <ul class="matchup">
-                    <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xyjj" target="_blank">Gemma Arterton<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xyjj" target="_blank">Lili Reinhart<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xyjj" target="_blank">Elizabeth Hurley<span class="score">&nbsp;</span></a></li>
-                 </ul>
-                 <ul class="matchup">
-                    <li class="team team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xyf7" target="_blank">Felicity Jones<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xyf7" target="_blank">Karen Gillan<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xyf7" target="_blank">Helga Lovekaty<span class="score">&nbsp;</span></a></li>
-                 </ul>
-                 <ul class="matchup">
-                    <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xyol" target="_blank">Yanet Garcia<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xyol" target="_blank">Milana Vayntrub<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xyol" target="_blank">Alison Brie<span class="score">&nbsp;</span></a></li>
-                 </ul>
-                 <p class="group-details">Group D</p>
-                 <ul class="matchup">
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqre0" target="_blank">Emily Ratajkowski<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqre0" target="_blank">Nicola Cavanis<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqre0" target="_blank">Ashley Benson<span class="score">&nbsp;</span></a></li>
-                 </ul>
-                 <ul class="matchup">
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqrl9" target="_blank">Lacey Chabert<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqrl9" target="_blank">Kaya Scodelario<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqrl9" target="_blank">Diane Kruger<span class="score">&nbsp;</span></a></li>
-                 </ul>
-                 <ul class="matchup">
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqs28" target="_blank">Daisy Ridley<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqs28" target="_blank">Amanda Seyfried<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqs28" target="_blank">Zooey Deschanel<span class="score">&nbsp;</span></a></li>
-                 </ul>
-                 <ul class="matchup">
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqrvo" target="_blank">Linda Cardellini<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqrvo" target="_blank">Rachel Mcadams<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqrvo" target="_blank">Madelaine Petsch<span class="score">&nbsp;</span></a></li>
-                 </ul>
-             </div>
-             <!-- END ROUND ONE -->
-             <div class="round round-two current">
-                <div class="round-details">Round 2<br/></div>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/otworu" target="_blank">Evangeline Lilly<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/otworu" target="_blank">Ariana Grande<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/otwp0t" target="_blank">Anya Taylor-Joy<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/otwp0t" target="_blank">Kate Mara<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/otwp4" target="_blank">Kaley Cuoco<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/otwp4" target="_blank">Megan Fox<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/otwobk" target="_blank">Emily Blunt<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/otwobk" target="_blank">Isla Fisher<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oxshe5" target="_blank">Kristen Bell<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oxshe5" target="_blank">Lili Reinhart<span class="score">&nbsp;</span></a></li>
-                 </ul>
-                 <ul class="matchup">
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oxsh9j" target="_blank">Felicity Jones<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oxsh9j" target="_blank">Alison Brie<span class="score">&nbsp;</span></a></li>
-                 </ul>
-                 <ul class="matchup">
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oxsh37" target="_blank">Emily Ratajkowski<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oxsh37" target="_blank">Kaya Scodelario<span class="score">&nbsp;</span></a></li>
-                 </ul>
-                 <ul class="matchup">
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oxsgw4" target="_blank">Amanda Seyfried<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oxsgw4" target="_blank">Rachel Mcadams<span class="score">&nbsp;</span></a></li>
-                 </ul>  
-             </div>
-             <!-- END ROUND TWO -->
-             <div class="round round-three current">
-                <div class="round-details">Round 3A<br/></div>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="javascript:void(0);">Evangeline Lilly<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="javascript:void(0);">Kate Mara<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="javascript:void(0);">Kaley Cuoco<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="javascript:void(0);">Isla Fisher<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">s
-                    <li class="team team-top name-details"><a href="javascript:void(0);">Kristen Bell<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="javascript:void(0);">Alison Brie<span class="score">&nbsp;</span></a></li>
-                 </ul>
-                 <ul class="matchup">
-                    <li class="team team-top name-details"><a href="javascript:void(0);">Emily Ratajkowski<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="javascript:void(0);">Rachel Mcadams<span class="score">&nbsp;</span></a></li>
-                 </ul>
-             </div>
-             <!-- END ROUND THREE -->
-             <div class="round quarterfinals current">
-                <div class="round-details">Quarterfinals<br/></div>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
-                </ul>
-             </div>     
-          </div>
-          <div class="champion">
-             <div class="semis-l current">
-                <div class="round-details">Semifinals 1 <br/></div>
-                <ul class ="matchup championship">
-                    <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
-                </ul>
-             </div>
-             <div class="final current">
-                <i class="fa fa-trophy"></i>
-                <div class="round-details">Grand Finale <br/></div>
-                <ul class ="matchup championship">
-                    <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
-                </ul>
-             </div>
-             <div class="semis-r current">
-                <div class="round-details">Semifinals 2 <br/></div>
-                <ul class ="matchup championship">
-                    <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
-                </ul>
-             </div>
-          </div>
-          <div class="split split-two">
-            <div class="round quarterfinals current">
-                <div class="round-details">Quarterfinals<br/></div>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
-                </ul>
-             </div>  
-             <div class="round round-three current">
-                <div class="round-details">Round 3B<br/></div>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
-                 </ul>
-                 <ul class="matchup">
-                    <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
-                 </ul>
-             </div>
-             <!-- END ROUND THREE -->    
-             <div class="round round-two current">
-                <div class="round-details">Round 2<br/></div>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oztoba" target="_blank">Elizabeth Gillies<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oztoba" target="_blank">Natalie Dormer<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oztoju" target="_blank">Keira Knightley<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oztoju" target="_blank">Jenna Coleman<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oztoof" target="_blank">Jennifer Love Hewitt<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oztoof" target="_blank">Lauren Cohan<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oztofg" target="_blank">Minka Kelly<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oztofg" target="_blank">Erin Moriarty<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="javascript:void(0);">Olivia Wilde<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="javascript:void(0);">Brie Larson<span class="score">&nbsp;</span></a></li>
-                 </ul>
-                 <ul class="matchup">
-                    <li class="team team-top name-details"><a href="javascript:void(0);">Kat Dennings<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="javascript:void(0);">Yvonne Strahovski<span class="score">&nbsp;</span></a></li>
-                 </ul>
-                 <ul class="matchup">
-                    <li class="team team-top name-details"><a href="javascript:void(0);">Mary Elizabeth Winstead<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="javascript:void(0);">Willa Holland<span class="score">&nbsp;</span></a></li>
-                 </ul>
-                 <ul class="matchup">
-                    <li class="team team-top name-details"><a href="javascript:void(0);">Vanessa Hudgens<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="javascript:void(0);">Eva Green<span class="score">&nbsp;</span></a></li>
-                 </ul>
-             </div>
-             <!-- END ROUND TWO -->
-             <div class="round round-one current current">
-                <div class="round-details">Round 1<br/></div>
-                <p class="group-details">Group E</p>
-                <ul class="matchup">
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuvjw" target="_blank">Cobie Smulders<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuvjw" target="_blank">Stacy Keibler<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuvjw" target="_blank">Elizabeth Gillies<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuvrf" target="_blank">Natalie Dormer<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuvrf" target="_blank">Hilary Duff<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuvrf" target="_blank">Lyndsy Fonseca<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuw0z" target="_blank">Sydney Sweeney<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuw0z" target="_blank">Keira Knightley<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuw0z" target="_blank">Mckayla Maroney<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuvbr" target="_blank">Hayden Panettiere<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuvbr" target="_blank">Jenna Coleman<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuvbr" target="_blank">Amanda Cerny<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <p class="group-details">Group F</p>
-                <ul class="matchup">
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5rt7" target="_blank">Lily Collins<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5rt7" target="_blank">Jennifer Love Hewitt<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5rt7" target="_blank">Lily James<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5rdw" target="_blank">Alyssa Arce<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5rdw" target="_blank">Lauren Cohan<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5rdw" target="_blank">Alejandra Guilmant<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5ryy" target="_blank">Minka Kelly<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5ryy" target="_blank">Nathalie Emmanuel<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5ryy" target="_blank">Penelope Cruz<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5rm5" target="_blank">Erin Moriarty<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5rm5" target="_blank">Elisha Cuthbert<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5rm5" target="_blank">Marisa Tomei<span class="score">&nbsp;</span></a></li>
-                </ul>
-                <p class="group-details">Group G</p>
-                <ul class="matchup">
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln9cc" target="_blank">Olivia Wilde<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln9cc" target="_blank">Alexa Bliss<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln9cc" target="_blank">Paige Spiranac<span class="score">&nbsp;</span></a></li>
-                 </ul>
-                 <ul class="matchup">
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln8j0" target="_blank">Shakira<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln8j0" target="_blank">Brie Larson<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln8j0" target="_blank">Deborah Ann Woll<span class="score">&nbsp;</span></a></li>
-                 </ul>
-                 <ul class="matchup">
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln93n" target="_blank">Kat Dennings<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln93n" target="_blank">Elizabeth Turner<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln93n" target="_blank">Tiffani Thiessen<span class="score">&nbsp;</span></a></li>
-                 </ul>
-                 <ul class="matchup">
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln8v2" target="_blank">Yvonne Strahovski<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln8v2" target="_blank">Eiza Gonzalez<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln8v2" target="_blank">Kristin Kreuk<span class="score">&nbsp;</span></a></li>
-                 </ul>
-                 <p class="group-details">Group H</p>
-                 <ul class="matchup">
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq48er" target="_blank">Mary Elizabeth Winstead<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq48er" target="_blank">Leighton Meester<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq48er" target="_blank">Dianna Agron<span class="score">&nbsp;</span></a></li>
-                 </ul>
-                 <ul class="matchup">
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq48pk" target="_blank">Willa Holland<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq48pk" target="_blank">Monica Bellucci<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq48pk" target="_blank">Melissa Rauch<span class="score">&nbsp;</span></a></li>
-                 </ul>
-                 <ul class="matchup">
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq486h" target="_blank">Vanessa Hudgens<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq486h" target="_blank">Emily Vancamp<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq486h" target="_blank">Alex Morgan<span class="score">&nbsp;</span></a></li>
-                 </ul>
-                 <ul class="matchup">
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq4bvx" target="_blank">Zoey Deutch<span class="score">&nbsp;</span></a></li>
-                    <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq4bvx" target="_blank">Eva Green<span class="score">&nbsp;</span></a></li>
-                    <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq4bvx" target="_blank">Sammi Giancola<span class="score">&nbsp;</span></a></li>
-                 </ul>
-             </div>
-             <!-- END ROUND ONE -->                          
-          </div>
-       </div>
-    </section>
-    <section class="share">
-        <p>&nbsp;</p>
-    </section>
-    </body>
+
+    <main id="main">
+        <!-- ======= Our Team Section ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Hottest Underrated Celeb</h2>
+                </div>
+            </div>
+            <div id="animatedBackground"></div>
+        </section>
+        <!-- End Our Team Section -->
+        <!-- ======= Team Section ======= -->
+
+        <section id="bracket">
+            <div class="br-container">
+                <div class="split split-one">
+                    <div class="round round-one current">
+                        <div class="round-details">Round 1<br /></div>
+                        <p class="group-details">Group A</p>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2p17b/" target="_blank">Evangeline Lilly<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2p17b/" target="_blank">Amy Adams<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2p17b/" target="_blank">Naomi Scott<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2p0vd/" target="_blank">Jessica Biel<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2p0vd/" target="_blank">Ariana Grande<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2p0vd/" target="_blank">Danielle Sharp<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2p12h/" target="_blank">Anya Taylor-Joy<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2p12h/" target="_blank">Miranda Kerr<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2p12h/" target="_blank">Lucy Pinder<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2oxah/" target="_blank">Kate Mara<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2oxah/" target="_blank">Brooklyn Decker<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o2oxah/" target="_blank">Audrey Hepburn<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <p class="group-details">Group B</p>
+                        <ul class="matchup">
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b5kx" target="_blank">Allison Stokke<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b5kx" target="_blank">Kaley Cuoco<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b5kx" target="_blank">Julia Liepa<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b65a" target="_blank">Olivia Munn<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b65a" target="_blank">Megan Fox<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b65a" target="_blank">Dove Cameron<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b5wx" target="_blank">Michelle Trachtenberg<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b5wx" target="_blank">Emily Blunt<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b5wx" target="_blank">Jennifer Aniston<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b61a" target="_blank">Caylee Cowan<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b61a" target="_blank">Isla Fisher<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/o6b61a" target="_blank">Bryce Dallas Howard<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <p class="group-details">Group C</p>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xy52" target="_blank">Kristen Bell<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xy52" target="_blank">Sarah Shahi<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xy52" target="_blank">Chloe Grace Moretz<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xyjj" target="_blank">Gemma Arterton<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xyjj" target="_blank">Lili Reinhart<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xyjj" target="_blank">Elizabeth Hurley<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xyf7" target="_blank">Felicity Jones<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xyf7" target="_blank">Karen Gillan<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xyf7" target="_blank">Helga Lovekaty<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xyol" target="_blank">Yanet Garcia<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xyol" target="_blank">Milana Vayntrub<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://www.reddit.com/r/CelebBattles/comments/o8xyol" target="_blank">Alison Brie<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <p class="group-details">Group D</p>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqre0" target="_blank">Emily Ratajkowski<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqre0" target="_blank">Nicola Cavanis<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqre0" target="_blank">Ashley Benson<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqrl9" target="_blank">Lacey Chabert<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqrl9" target="_blank">Kaya Scodelario<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqrl9" target="_blank">Diane Kruger<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqs28" target="_blank">Daisy Ridley<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqs28" target="_blank">Amanda Seyfried<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqs28" target="_blank">Zooey Deschanel<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqrvo" target="_blank">Linda Cardellini<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqrvo" target="_blank">Rachel Mcadams<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/obqrvo" target="_blank">Madelaine Petsch<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                    </div>
+                    <!-- END ROUND ONE -->
+                    <div class="round round-two current">
+                        <div class="round-details">Round 2<br /></div>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/otworu" target="_blank">Evangeline Lilly<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/otworu" target="_blank">Ariana Grande<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/otwp0t" target="_blank">Anya Taylor-Joy<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/otwp0t" target="_blank">Kate Mara<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/otwp4" target="_blank">Kaley Cuoco<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/otwp4" target="_blank">Megan Fox<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/otwobk" target="_blank">Emily Blunt<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/otwobk" target="_blank">Isla Fisher<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oxshe5" target="_blank">Kristen Bell<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oxshe5" target="_blank">Lili Reinhart<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oxsh9j" target="_blank">Felicity Jones<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oxsh9j" target="_blank">Alison Brie<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oxsh37" target="_blank">Emily Ratajkowski<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oxsh37" target="_blank">Kaya Scodelario<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oxsgw4" target="_blank">Amanda Seyfried<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oxsgw4" target="_blank">Rachel Mcadams<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                    </div>
+                    <!-- END ROUND TWO -->
+                    <div class="round round-three current">
+                        <div class="round-details">Round 3A<br /></div>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="javascript:void(0);">Evangeline Lilly<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="javascript:void(0);">Kate Mara<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="javascript:void(0);">Kaley Cuoco<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="javascript:void(0);">Isla Fisher<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">s
+                            <li class="team team-top name-details"><a href="javascript:void(0);">Kristen Bell<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="javascript:void(0);">Alison Brie<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="javascript:void(0);">Emily Ratajkowski<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="javascript:void(0);">Rachel Mcadams<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                    </div>
+                    <!-- END ROUND THREE -->
+                    <div class="round quarterfinals current">
+                        <div class="round-details">Quarterfinals<br /></div>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="champion">
+                    <div class="semis-l current">
+                        <div class="round-details">Semifinals 1 <br /></div>
+                        <ul class="matchup championship">
+                            <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="final current">
+                        <i class="fa fa-trophy"></i>
+                        <div class="round-details">Grand Finale <br /></div>
+                        <ul class="matchup championship">
+                            <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="semis-r current">
+                        <div class="round-details">Semifinals 2 <br /></div>
+                        <ul class="matchup championship">
+                            <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="split split-two">
+                    <div class="round quarterfinals current">
+                        <div class="round-details">Quarterfinals<br /></div>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="round round-three current">
+                        <div class="round-details">Round 3B<br /></div>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="javascript:void(0);"><span class="score">&nbsp;</span></a></li>
+                        </ul>
+                    </div>
+                    <!-- END ROUND THREE -->
+                    <div class="round round-two current">
+                        <div class="round-details">Round 2<br /></div>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oztoba" target="_blank">Elizabeth Gillies<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oztoba" target="_blank">Natalie Dormer<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oztoju" target="_blank">Keira Knightley<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oztoju" target="_blank">Jenna Coleman<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oztoof" target="_blank">Jennifer Love Hewitt<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oztoof" target="_blank">Lauren Cohan<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oztofg" target="_blank">Minka Kelly<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oztofg" target="_blank">Erin Moriarty<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="javascript:void(0);">Olivia Wilde<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="javascript:void(0);">Brie Larson<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="javascript:void(0);">Kat Dennings<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="javascript:void(0);">Yvonne Strahovski<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="javascript:void(0);">Mary Elizabeth Winstead<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="javascript:void(0);">Willa Holland<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="javascript:void(0);">Vanessa Hudgens<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="javascript:void(0);">Eva Green<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                    </div>
+                    <!-- END ROUND TWO -->
+                    <div class="round round-one current current">
+                        <div class="round-details">Round 1<br /></div>
+                        <p class="group-details">Group E</p>
+                        <ul class="matchup">
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuvjw" target="_blank">Cobie Smulders<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuvjw" target="_blank">Stacy Keibler<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuvjw" target="_blank">Elizabeth Gillies<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuvrf" target="_blank">Natalie Dormer<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuvrf" target="_blank">Hilary Duff<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuvrf" target="_blank">Lyndsy Fonseca<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuw0z" target="_blank">Sydney Sweeney<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuw0z" target="_blank">Keira Knightley<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuw0z" target="_blank">Mckayla Maroney<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuvbr" target="_blank">Hayden Panettiere<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuvbr" target="_blank">Jenna Coleman<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oeuvbr" target="_blank">Amanda Cerny<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <p class="group-details">Group F</p>
+                        <ul class="matchup">
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5rt7" target="_blank">Lily Collins<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5rt7" target="_blank">Jennifer Love Hewitt<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5rt7" target="_blank">Lily James<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5rdw" target="_blank">Alyssa Arce<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5rdw" target="_blank">Lauren Cohan<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5rdw" target="_blank">Alejandra Guilmant<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5ryy" target="_blank">Minka Kelly<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5ryy" target="_blank">Nathalie Emmanuel<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5ryy" target="_blank">Penelope Cruz<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5rm5" target="_blank">Erin Moriarty<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5rm5" target="_blank">Elisha Cuthbert<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oi5rm5" target="_blank">Marisa Tomei<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <p class="group-details">Group G</p>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln9cc" target="_blank">Olivia Wilde<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln9cc" target="_blank">Alexa Bliss<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln9cc" target="_blank">Paige Spiranac<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln8j0" target="_blank">Shakira<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln8j0" target="_blank">Brie Larson<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln8j0" target="_blank">Deborah Ann Woll<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln93n" target="_blank">Kat Dennings<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln93n" target="_blank">Elizabeth Turner<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln93n" target="_blank">Tiffani Thiessen<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln8v2" target="_blank">Yvonne Strahovski<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln8v2" target="_blank">Eiza Gonzalez<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oln8v2" target="_blank">Kristin Kreuk<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <p class="group-details">Group H</p>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq48er" target="_blank">Mary Elizabeth Winstead<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq48er" target="_blank">Leighton Meester<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq48er" target="_blank">Dianna Agron<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq48pk" target="_blank">Willa Holland<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq48pk" target="_blank">Monica Bellucci<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq48pk" target="_blank">Melissa Rauch<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq486h" target="_blank">Vanessa Hudgens<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq486h" target="_blank">Emily Vancamp<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq486h" target="_blank">Alex Morgan<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq4bvx" target="_blank">Zoey Deutch<span class="score">&nbsp;</span></a></li>
+                            <li class="team team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq4bvx" target="_blank">Eva Green<span class="score">&nbsp;</span></a></li>
+                            <li class="loser team-top name-details"><a href="https://reddit.com/r/CelebBattles/comments/oq4bvx" target="_blank">Sammi Giancola<span class="score">&nbsp;</span></a></li>
+                        </ul>
+                    </div>
+                    <!-- END ROUND ONE -->
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer id="footer">
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong><span>CelebBattles</span></strong>. All Rights Reserved
+            </div>
+        </div>
+    </footer>
+</body>
