@@ -9,12 +9,12 @@
 # General
 --------------------------------------------------------------*/
 body {
-  font-family: "Open Sans", sans-serif;
-  color: #444;
+  font-family: Montserrat;
+  color: #fff;
 }
 
 a {
-  color: #4fa6d5;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -24,7 +24,8 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6, .font-primary {
-  font-family: "Roboto", sans-serif;
+  font-family: Montserrat;
+  text-transform: uppercase;
 }
 
 /*--------------------------------------------------------------
@@ -68,7 +69,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
   transition: all 0.5s;
   z-index: 997;
   transition: all 0.5s;
-  background: #1e4356;
+  background: #b90f2e;
 }
 
 #header.header-transparent {
@@ -81,13 +82,12 @@ h1, h2, h3, h4, h5, h6, .font-primary {
 }
 
 #header .logo h1 {
-  font-size: 28px;
+  font-family: Montserrat;
+  font-size: 30px;
   margin: 0;
   padding: 4px 0;
   line-height: 1;
   font-weight: 400;
-  letter-spacing: 3px;
-  text-transform: uppercase;
 }
 
 #header .logo h1 a, #header .logo h1 a:hover {
@@ -132,7 +132,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
   align-items: center;
   justify-content: space-between;
   padding: 10px 0 10px 30px;
-  font-family: "Open Sans", sans-serif;
+  font-family: Montserrat;
   font-size: 14px;
   color: #fff;
   white-space: nowrap;
@@ -146,7 +146,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
 }
 
 .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
-  color: #a2cce3;
+  color: #fff;
 }
 
 .navbar .dropdown ul {
@@ -385,7 +385,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
 }
 
 #hero .btn-get-started {
-  font-family: "Roboto", sans-serif;
+  font-family: Montserrat;
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 1px;
@@ -487,7 +487,7 @@ h1, h2, h3, h4, h5, h6, .font-primary {
 }
 
 #hero-no-slider .btn-get-started {
-  font-family: "Roboto", sans-serif;
+  font-family: Montserrat;
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 1px;
@@ -570,12 +570,12 @@ section {
 --------------------------------------------------------------*/
 .breadcrumbs {
   padding: 15px 0;
-  background-color: #f3f8fa;
+  background-color: #1d1d1d;
   min-height: 40px;
 }
 
 .breadcrumbs h2 {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 300;
 }
 
@@ -942,7 +942,7 @@ section {
 .facts .counters p {
   padding: 0;
   margin: 0 0 20px 0;
-  font-family: "Roboto", sans-serif;
+  font-family: Montserrat;
   font-size: 14px;
 }
 
@@ -1153,7 +1153,7 @@ section {
   font-size: 46px;
   color: #68A4C4;
   font-weight: 400;
-  font-family: "Open Sans", sans-serif;
+  font-family: Montserrat;
   margin-bottom: 25px;
 }
 
@@ -1202,7 +1202,7 @@ section {
   transition: none;
   font-size: 14px;
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
+  font-family: Montserrat;
   transition: 0.3s;
 }
 
@@ -1269,7 +1269,7 @@ section {
   color: #444;
   transition: all 0.3s ease-in-out;
   border-bottom: 2px solid #fff;
-  font-family: "Roboto", sans-serif;
+  font-family: Montserrat;
 }
 
 .portfolio #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
@@ -1395,7 +1395,7 @@ section {
 # Team
 --------------------------------------------------------------*/
 .team {
-  background: #fff;
+  background: #262626;
   padding-bottom: 30px;
 }
 
@@ -1441,9 +1441,9 @@ section {
 }
 
 .team .member .member-info h4 {
-  font-weight: 700;
+  font-weight: 600;
   margin: 15px 0 5px 0;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .team .member .member-info span {
@@ -2128,7 +2128,7 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  background: #0b212d;
+  background: #1d1d1d;
   padding: 0 0 30px 0;
   color: #fff;
   font-size: 14px;
@@ -2206,7 +2206,7 @@ section {
   font-size: 14px;
   line-height: 24px;
   margin-bottom: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: Montserrat;
   color: #fff;
 }
 

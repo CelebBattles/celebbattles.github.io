@@ -19,6 +19,7 @@
       <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
       <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
       <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+      <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
       <!-- Template Main CSS File -->
       <link href="assets/css/style.css" rel="stylesheet">
       <!-- =======================================================
@@ -30,7 +31,7 @@
       <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
       <script type="text/javascript">
          $(document).ready(function() {
-           $.get('rankings.txt', function(result) {
+           $.get('http://127.0.0.1:5000/', function(result) {
                var lines = result.split("\n")
                
                for (var i = 1; i <= lines.length; i++) {
@@ -83,9 +84,6 @@
             <div class="container">
                <div class="d-flex justify-content-between align-items-center">
                   <h2>Top 30 Celebs</h2>
-                  <ol>
-                     <li><a href="index.html">Home</a></li>
-                  </ol>
                </div>
             </div>
          </section>
@@ -97,7 +95,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r1" class="img-fluid" alt="image missing">
+                           <img id="img-r1" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r1"></h4>
@@ -108,7 +106,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r2" class="img-fluid" alt="image missing">
+                           <img id="img-r2" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r2"></h4>
@@ -119,7 +117,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r3" class="img-fluid" alt="image missing">
+                           <img id="img-r3" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r3"></h4>
@@ -130,7 +128,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r4" class="img-fluid" alt="image missing">
+                           <img id="img-r4" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r4"></h4>
@@ -141,7 +139,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r5" class="img-fluid" alt="image missing">
+                           <img id="img-r5" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r5"></h4>
@@ -152,7 +150,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r6" class="img-fluid" alt="image missing">
+                           <img id="img-r6" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r6"></h4>
@@ -163,7 +161,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r7" class="img-fluid" alt="image missing">
+                           <img id="img-r7" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r7"></h4>
@@ -174,7 +172,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r8" class="img-fluid" alt="image missing">
+                           <img id="img-r8" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r8"></h4>
@@ -185,7 +183,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r9" class="img-fluid" alt="image missing">
+                           <img id="img-r9" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r9"></h4>
@@ -196,7 +194,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r10" class="img-fluid" alt="image missing">
+                           <img id="img-r10" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r10"></h4>
@@ -207,7 +205,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r11" class="img-fluid" alt="image missing">
+                           <img id="img-r11" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r11"></h4>
@@ -218,7 +216,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r12" class="img-fluid" alt="image missing">
+                           <img id="img-r12" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r12"></h4>
@@ -229,7 +227,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r13" class="img-fluid" alt="image missing">
+                           <img id="img-r13" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r13"></h4>
@@ -240,7 +238,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r14" class="img-fluid" alt="image missing">
+                           <img id="img-r14" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r14"></h4>
@@ -251,7 +249,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r15" class="img-fluid" alt="image missing">
+                           <img id="img-r15" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r15"></h4>
@@ -262,7 +260,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r16" class="img-fluid" alt="image missing">
+                           <img id="img-r16" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r16"></h4>
@@ -273,7 +271,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r17" class="img-fluid" alt="image missing">
+                           <img id="img-r17" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r17"></h4>
@@ -284,7 +282,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r18" class="img-fluid" alt="image missing">
+                           <img id="img-r18" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r18"></h4>
@@ -295,7 +293,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r19" class="img-fluid" alt="image missing">
+                           <img id="img-r19" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r19"></h4>
@@ -306,7 +304,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r20" class="img-fluid" alt="image missing">
+                           <img id="img-r20" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r20"></h4>
@@ -317,7 +315,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r21" class="img-fluid" alt="image missing">
+                           <img id="img-r21" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r21"></h4>
@@ -328,7 +326,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r22" class="img-fluid" alt="image missing">
+                           <img id="img-r22" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r22"></h4>
@@ -339,7 +337,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r23" class="img-fluid" alt="image missing">
+                           <img id="img-r23" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r23"></h4>
@@ -350,7 +348,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r24" class="img-fluid" alt="image missing">
+                           <img id="img-r24" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r24"></h4>
@@ -361,7 +359,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r25" class="img-fluid" alt="image missing">
+                           <img id="img-r25" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r25"></h4>
@@ -372,7 +370,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r26" class="img-fluid" alt="image missing">
+                           <img id="img-r26" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r26"></h4>
@@ -383,7 +381,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r27" class="img-fluid" alt="image missing">
+                           <img id="img-r27" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r27"></h4>
@@ -394,7 +392,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r28" class="img-fluid" alt="image missing">
+                           <img id="img-r28" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r28"></h4>
@@ -405,7 +403,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r29" class="img-fluid" alt="image missing">
+                           <img id="img-r29" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r29"></h4>
@@ -416,7 +414,7 @@
                   <div  class="col-lg-3 col-md-5 d-flex align-items-stretch">
                      <div class="member">
                         <div class="member-img">
-                           <img id="img-r30" class="img-fluid" alt="image missing">
+                           <img id="img-r30" class="img-fluid" >
                         </div>
                         <div class="member-info">
                            <h4 id="name-r30"></h4>
@@ -434,29 +432,29 @@
       <footer id="footer">
          <div class="container">
             <div class="copyright">
-               &copy; Copyright <strong><span>Moderna</span></strong>. All Rights Reserved
+               &copy; Copyright <strong><span>CelebBattles</span></strong>. All Rights Reserved
             </div>
-            <div class="credits">
-               <!-- All the links in the footer should remain intact. -->
-               <!-- You can delete the links only if you purchased the pro version. -->
-               <!-- Licensing information: https://bootstrapmade.com/license/ -->
-               <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/ -->
-               Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-            </div>
+              <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/ -->
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+              </div>
          </div>
       </footer>
       <!-- End Footer -->
       <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
       <!-- Vendor JS Files -->
-      <!-- <script src="assets/vendor/aos/aos.js"></script>
+      <script src="assets/vendor/aos/aos.js"></script>
          <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
          <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
          <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
          <script src="assets/vendor/php-email-form/validate.js"></script>
          <script src="assets/vendor/purecounter/purecounter.js"></script>
          <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-         <script src="assets/vendor/waypoints/noframework.waypoints.js"></script> -->
-      <!-- Template Main JS File -->
+         <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+      <!-- Template Main JS File
       <script src="assets/js/main.js"></script>
    </body>
 </html>
