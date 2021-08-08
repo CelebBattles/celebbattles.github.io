@@ -30,11 +30,32 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
-      $.get('rankings.txt', function (result) {
+      $.get('http://127.0.0.1:5000/', function (result) {
         var lines = result.split("\n")
 
-        for (var i = 1; i <= lines.length; i++) {
+        for (var i = 1; i < 33; i++) {
           var sep = lines[i - 1].split(",");
+          console.log(sep)
+
+          var imgDiv = $('<div/>', { 'class': 'member-img' })
+          var img = $('<img/>', { id: 'img-r' + i, 'class': 'img-fluid' })
+          imgDiv.append(img)
+
+          var infoDiv = $('<div/>', { 'class': 'member-info' })
+          var h4 = $('<h4/>', { id: 'name-r' + i })
+          var span = $('<span/>', { id: 'rank-r' + i })
+          infoDiv.append(h4)
+          infoDiv.append(span)
+
+          var memberDiv = $('<div/>', { 'class': 'member' })
+          memberDiv.append(imgDiv)
+          memberDiv.append(infoDiv)
+
+          var colDiv = $('<div/>', { 'class': 'col-lg-3 col-md-5 d-flex align-items-stretch' })
+          colDiv.append(memberDiv)
+
+          $('#col-holder').append(colDiv)
+
           $('#name-r' + i).html(sep[1]);
           $('#rank-r' + i).html(`Rank ${sep[0]}, ELO ${sep[2]} ${sep[8] === "-" ? "" : sep[8]}`);
           $('#img-r' + i).attr('src', `assets/img/${sep[1]}.jpg`);
@@ -73,351 +94,16 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
-      <!-- .navbar -->
     </div>
   </header>
-  <!-- End Header -->
   <main id="main">
     <section class="team">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r1" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r1"></h4>
-                <span id="rank-r1"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r2" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r2"></h4>
-                <span id="rank-r2"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r3" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r3"></h4>
-                <span id="rank-r3"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r4" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r4"></h4>
-                <span id="rank-r4"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r5" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r5"></h4>
-                <span id="rank-r5"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r6" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r6"></h4>
-                <span id="rank-r6"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r7" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r7"></h4>
-                <span id="rank-r7"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r8" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r8"></h4>
-                <span id="rank-r8"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r9" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r9"></h4>
-                <span id="rank-r9"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r10" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r10"></h4>
-                <span id="rank-r10"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r11" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r11"></h4>
-                <span id="rank-r11"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r12" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r12"></h4>
-                <span id="rank-r12"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r13" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r13"></h4>
-                <span id="rank-r13"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r14" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r14"></h4>
-                <span id="rank-r14"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r15" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r15"></h4>
-                <span id="rank-r15"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r16" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r16"></h4>
-                <span id="rank-r16"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r17" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r17"></h4>
-                <span id="rank-r17"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r18" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r18"></h4>
-                <span id="rank-r18"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r19" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r19"></h4>
-                <span id="rank-r19"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r20" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r20"></h4>
-                <span id="rank-r20"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r21" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r21"></h4>
-                <span id="rank-r21"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r22" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r22"></h4>
-                <span id="rank-r22"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r23" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r23"></h4>
-                <span id="rank-r23"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r24" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r24"></h4>
-                <span id="rank-r24"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r25" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r25"></h4>
-                <span id="rank-r25"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r26" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r26"></h4>
-                <span id="rank-r26"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r27" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r27"></h4>
-                <span id="rank-r27"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r28" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r28"></h4>
-                <span id="rank-r28"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r29" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r29"></h4>
-                <span id="rank-r29"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-5 d-flex align-items-stretch">
-            <div class="member">
-              <div class="member-img">
-                <img id="img-r30" class="img-fluid">
-              </div>
-              <div class="member-info">
-                <h4 id="name-r30"></h4>
-                <span id="rank-r30"></span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div id="col-holder" class="row"></div>
+      </div>
       </div>
     </section>
-    <!-- End Team Section -->
   </main>
-  <!-- End #main -->
-  <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="container">
       <div class="copyright">
