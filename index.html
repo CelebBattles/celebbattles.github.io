@@ -30,15 +30,12 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
-      $.get('rankings.txt', function (result) {
-        var lines = result.split("\n")
-
-        for (var i = 1; i < 33; i++) {
-          var sep = lines[i - 1].split(",");
-          console.log(sep)
-
-          var imgDiv = $('<div/>', { 'class': 'member-img' })
-          var img = $('<img/>', { id: 'img-r' + i, 'class': 'img-fluid' })
+      $.get('rankings.json', function (result) {
+        const myJson = JSON.parse(result)
+        var i = 0;
+        for (const celeb in myJson) {
+          const imgDiv = $('<div/>', { 'class': 'member-img' })
+          const img = $('<img/>', { id: 'img-r' + i, 'class': 'img-fluid' })
           imgDiv.append(img)
 
           var infoDiv = $('<div/>', { 'class': 'member-info' })
@@ -56,9 +53,11 @@
 
           $('#col-holder').append(colDiv)
 
-          $('#name-r' + i).html(sep[1]);
-          $('#rank-r' + i).html(`Rank ${sep[0]}, ELO ${sep[2]} ${sep[8] === "-" ? "" : sep[8]}`);
-          $('#img-r' + i).attr('src', `assets/img/${sep[1]}.jpg`);
+          $('#name-r' + i).html(celeb);
+          $('#rank-r' + i).html(`Rank ${myJson[celeb]['rank']}, ELO ${myJson[celeb]['rat']} ${myJson[celeb]['rchange'] === "-" ? "" : myJson[celeb]['rchange']}`);
+          $('#img-r' + i).attr('src', `assets/img/${celeb}.jpg`);
+
+          i++;
         }
       });
     });
