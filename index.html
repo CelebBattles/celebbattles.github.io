@@ -30,8 +30,7 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
-      $.get('rankings.json', function (result) {
-        const myJson = JSON.parse(result)
+      $.get('rankings.json', function (myJson) {
         var i = 0;
         for (const celeb in myJson) {
           const imgDiv = $('<div/>', { 'class': 'member-img' })
