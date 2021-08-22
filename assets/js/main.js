@@ -198,6 +198,7 @@ $(document).ready(function () {
     }
     const hashes = getUrlVars();
     const celeb = hashes.name.replaceAll('%20', ' ')
+    $('#title-details').html(`CelebBattles - ${celeb}`);
 
     $.get('../../rankings.json', function (myJson) {
         const freq = myJson[celeb]['freq'].split(",")
