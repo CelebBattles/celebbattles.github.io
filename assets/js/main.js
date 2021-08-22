@@ -202,11 +202,11 @@ $(document).ready(function () {
 
     $.get('../../rankings.json', function (myJson) {
         const freq = myJson[celeb]['freq'].split(",")
-        const freq_str = `${freq[0]} <br> ${freq[1]} battles, ${Number(freq[1]) - Number(freq[2])} wins (${Math.round((Number(freq[1]) - Number(freq[2])) / Number(freq[1]) * 100 * 10) / 10}%)`
+        const freq_str = `<a class="name-link" href="https://celebbattles.github.io/details?name=${freq[0]}">${freq[0]}</a> <br> ${freq[1]} battles, ${Number(freq[1]) - Number(freq[2])} wins (${Math.round((Number(freq[1]) - Number(freq[2])) / Number(freq[1]) * 100 * 10) / 10}%)`
         const best = myJson[celeb]['best'].split(",")
-        const best_str = `${best[0]} <br> ${best[1]} battles, ${Number(best[1]) - Number(best[2])} wins (${Math.round((Number(best[1]) - Number(best[2])) / Number(best[1]) * 100 * 10) / 10}%)`
+        const best_str = `<a class="name-link" href="https://celebbattles.github.io/details?name=${best[0]}">${best[0]}</a> <br> ${best[1]} battles, ${Number(best[1]) - Number(best[2])} wins (${Math.round((Number(best[1]) - Number(best[2])) / Number(best[1]) * 100 * 10) / 10}%)`
         const worst = myJson[celeb]['worst'].split(",")
-        const worst_str = `${worst[0]} <br> ${worst[1]} battles, ${Number(worst[1]) - Number(worst[2])} wins (${Math.round((Number(worst[1]) - Number(worst[2])) / Number(worst[1]) * 100 * 10) / 10}%)`
+        const worst_str = `<a class="name-link" href="https://celebbattles.github.io/details?name=${worst[0]}">${worst[0]}</a> <br> ${worst[1]} battles, ${Number(worst[1]) - Number(worst[2])} wins (${Math.round((Number(worst[1]) - Number(worst[2])) / Number(worst[1]) * 100 * 10) / 10}%)`
 
         $('#celeb-name').html(celeb)
         $('#celeb-img').attr('src', `assets/img/${celeb}.jpg`);
