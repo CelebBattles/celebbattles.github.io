@@ -142,3 +142,38 @@
     });
 
 })()
+
+// Load images of top celebs when index page loads
+$(document).ready(function () {
+    $.get('../../rankings.json', function (myJson) {
+        console.log(window.location.pathname)
+        console.log(myJson)
+        var i = 0;
+        for (const celeb in myJson) {
+            const imgDiv = $('<div/>', { 'class': 'member-img' })
+            const img = $('<img/>', { id: 'img-r' + i, 'class': 'img-fluid' })
+            imgDiv.append(img)
+
+            var infoDiv = $('<div/>', { 'class': 'member-info' })
+            var h4 = $('<h4/>', { id: 'name-r' + i })
+            var span = $('<span/>', { id: 'rank-r' + i })
+            infoDiv.append(h4)
+            infoDiv.append(span)
+
+            var memberDiv = $('<div/>', { 'class': 'member' })
+            memberDiv.append(imgDiv)
+            memberDiv.append(infoDiv)
+
+            var colDiv = $('<div/>', { 'class': 'col-lg-3 col-md-5 d-flex align-items-stretch' })
+            colDiv.append(memberDiv)
+
+            $('#col-holder').append(colDiv)
+
+            $('#name-r' + i).html(celeb);
+            $('#rank-r' + i).html(`Rank ${myJson[celeb]['rank']}, ELO ${myJson[celeb]['rat']} ${myJson[celeb]['rchange'] === "-" ? "" : myJson[celeb]['rchange']}`);
+            $('#img-r' + i).attr('src', `assets/img/${celeb}.jpg`);
+
+            i++;
+        }
+    });
+});
