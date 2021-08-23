@@ -22,3 +22,13 @@ button {
   outline: transparent;
   position: relative;
 }
+
+.privacy {
+  width: 55%; 
+  text-align: justify;
+}
+@media (max-width:768px) {
+  .privacy {
+    width:90%;
+  }
+} 
