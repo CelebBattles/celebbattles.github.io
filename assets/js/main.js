@@ -211,6 +211,7 @@ $(document).ready(function () {
         $('#celeb-name').html(celeb)
         $('#celeb-img').attr('src', `assets/img/${celeb}.jpg`);
         $('#rank').html(myJson[celeb]['rank'])
+        $('#rank-banner').html(`Rank - ${myJson[celeb]['rank']}`)
         $('#h-rank').html(myJson[celeb]['hrank'])
         $('#rat').html(myJson[celeb]['rat'])
         $('#dev').html(myJson[celeb]['dev'])
@@ -234,3 +235,34 @@ function getUrlVars() {
     }
     return vars;
 }
+
+// Search
+// $(document).ready(function () {
+//     $.ajaxSetup({ cache: false });
+
+//     $.get('http://127.0.0.1:5000', function (myJson) {
+//         var keys = []
+//         myJson = JSON.parse(myJson)
+//         for (var k in myJson) {
+//             keys.push(k)
+//         }
+
+//         $('#search').keyup(function () {
+//             $('#result').html('');
+//             var searchField = $('#search').val();
+
+//             if (searchField === '') {
+//                 $('#result').html('');
+//                 return;
+//             }
+
+//             var expression = new RegExp(searchField, "i");
+
+//             $.each(keys, function (key, value) {
+//                 if (value.search(expression) != -1) {
+//                     $('#result').append(`<li class="list-group-item link-class">${value}</li>`);
+//                 }
+//             })
+//         });
+//     })
+// });
