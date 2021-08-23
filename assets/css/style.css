@@ -8,13 +8,17 @@ input[type=text] {
     margin-top: 8px;
     margin-right: 16px;
     font-size: 15px;
-  }
+}
 
-.rank-h4 {
-  border: 3px solid #b90f2e;
-  border-radius: 8px;
-  display: inline-block;
-  text-align: center;
-  padding: 8px;
-  text-transform: capitalize;
+button {
+  width: 60%;
+  font-size: 36px;
+  font-family: 'Bebas Neue', cursive;
+  background: linear-gradient(45deg, transparent 5%, #b90f2e 5%);
+  border: 0;
+  color: #fff;
+  letter-spacing: 3px;
+  line-height: 88px;
+  outline: transparent;
+  position: relative;
 }
