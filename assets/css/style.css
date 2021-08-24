@@ -13,7 +13,7 @@ input[type=text] {
 button {
   width: 60%;
   font-size: 36px;
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'MONTSERRAT';
   background: linear-gradient(45deg, transparent 5%, #b90f2e 5%);
   border: 0;
   color: #fff;
@@ -21,6 +21,7 @@ button {
   line-height: 88px;
   outline: transparent;
   position: relative;
+  font-weight: bold;
 }
 
 .privacy {

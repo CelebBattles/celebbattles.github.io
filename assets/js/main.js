@@ -211,7 +211,7 @@ $(document).ready(function () {
         $('#celeb-name').html(celeb)
         $('#celeb-img').attr('src', `assets/img/${celeb}.jpg`);
         $('#rank').html(myJson[celeb]['rank'])
-        $('#rank-banner').html(`Rank ${myJson[celeb]['rank']}`)
+        $('#rank-banner').html(`RANK ${myJson[celeb]['rank']}`)
         $('#h-rank').html(myJson[celeb]['hrank'])
         $('#rat').html(myJson[celeb]['rat'])
         $('#dev').html(myJson[celeb]['dev'])
