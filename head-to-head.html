@@ -14,7 +14,7 @@
 
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title id="title-details">CelebBattles - details</title>
+    <title id="title-h2h">CelebBattles</title>
     <link rel="icon" type="image/png" href="tournaments/favicon.png" />
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -28,8 +28,6 @@
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -38,9 +36,11 @@
         <div class="container d-flex justify-content-between align-items-center">
             <div class="logo">
                 <h1 class="text-light"><a href="https://celebbattles.github.io/"><span>CelebBattles </span></a></h1>
+
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
+
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="active" href="https://celebbattles.github.io/">Home</a></li>
@@ -67,64 +67,63 @@
         <section class="breadcrumbs">
             <div class="container">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2 id="celeb-name"></h2>
+                    <h2 class="h2h-header" id="h2h-header"></h2>
                 </div>
             </div>
+
         </section>
-        <section class="team">
+        <section class="team h2h-section">
             <div class="container">
-                <div class="row">
-                    <div class="col-sm">
-                        <img id="celeb-img" class="img-fluid details-image" width="60%" style="margin: auto; display: block; border-radius: 2%;">
-                        <div style="text-align: center;">
-                            <br>
-                            <br>
-                            <button id="rank-banner"></button>
-                            <br>
-                            <br>
+                <div class="col-sm">
+                    <div class="row">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <a id="h2h-celeb-1-href"><img class="h2h-img-l" id="h2h-celeb-1-img"></a>
+                                </div>
+                                <div class="col">
+                                    <a id="h2h-celeb-2-href"><img class="h2h-img-r" id="h2h-celeb-2-img"></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-sm">
-                        <table class="table-responsive info-table">
-                            <tr class="info-table-r">
-                                <td class="info-table-dl">Rank</td>
-                                <td class="info-table-d" id="rank"></td>
+                    <br><br>
+                    <div class="row h2h-table-container">
+                        <table class="table-responsive h2h-table">
+                            <tr class="h2h-table-row">
+                                <td class="h2h-td-l" id="h2h-celeb-1-score"></td>
+                                <td>Head to Head score</td>
+                                <td class="h2h-td-r" id="h2h-celeb-2-score"></td>
                             </tr>
-                            <tr class="info-table-r">
-                                <td class="info-table-dl">Highest rank</td>
-                                <td class="info-table-d" id="h-rank"></td>
+                            <tr class="h2h-table-row">
+                                <td class="h2h-td-l" id="h2h-celeb-1-rank"></td>
+                                <td>Rank</td>
+                                <td class="h2h-td-r" id="h2h-celeb-2-rank"></td>
                             </tr>
-                            <tr class="info-table-r">
-                                <td class="info-table-dl">Rating</td>
-                                <td class="info-table-d" id="rat"></td>
+                            <tr class="h2h-table-row">
+                                <td class="h2h-td-l" id="h2h-celeb-1-hrank"></td>
+                                <td>Highest Rank</td>
+                                <td class="h2h-td-r" id="h2h-celeb-2-hrank"></td>
                             </tr>
-                            <tr class="info-table-r">
-                                <td class="info-table-dl">Rating deviation</td>
-                                <td class="info-table-d" id="dev"></td>
+                            <tr class="h2h-table-row">
+                                <td class="h2h-td-l" id="h2h-celeb-1-rat"></td>
+                                <td>Rating</td>
+                                <td class="h2h-td-r" id="h2h-celeb-2-rat"></td>
                             </tr>
-                            <tr class="info-table-r">
-                                <td class="info-table-dl">Number of battles played</td>
-                                <td class="info-table-d" id="num"></td>
+                            <tr class="h2h-table-row">
+                                <td class="h2h-td-l" id="h2h-celeb-1-orat"></td>
+                                <td>Avg. opponent rating</td>
+                                <td class="h2h-td-r" id="h2h-celeb-2-orat"></td>
                             </tr>
-                            <tr class="info-table-r">
-                                <td class="info-table-dl">Average opponent rating</td>
-                                <td class="info-table-d" id="oppo"></td>
+                            <tr class="h2h-table-row">
+                                <td class="h2h-td-l" id="h2h-celeb-1-num"></td>
+                                <td>No. of battles played</td>
+                                <td class="h2h-td-r" id="h2h-celeb-2-num"></td>
                             </tr>
-                            <tr class="info-table-r">
-                                <td class="info-table-dl">Win percentage</td>
-                                <td class="info-table-d" id="winPer"></td>
-                            </tr>
-                            <tr class="info-table-r">
-                                <td class="info-table-dl">Most frequent opponent</td>
-                                <td class="info-table-d" id="freq-oppo"></td>
-                            </tr>
-                            <tr class="info-table-r">
-                                <td class="info-table-dl">Best score against</td>
-                                <td class="info-table-d" id="best-score"></td>
-                            </tr>
-                            <tr class="info-table-r">
-                                <td class="info-table-dl">Worst score against</td>
-                                <td class="info-table-d" id="worst-score"></td>
+                            <tr class="h2h-table-row">
+                                <td class="h2h-td-l" id="h2h-celeb-1-per"></td>
+                                <td>Overall win percentage</td>
+                                <td class="h2h-td-r" id="h2h-celeb-2-per"></td>
                             </tr>
                         </table>
                     </div>

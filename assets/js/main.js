@@ -227,6 +227,52 @@ $(document).ready(function () {
     document.getElementById("rank-banner").disabled = "disabled";
 });
 
+/**
+ * Load celeb information when head-to-head page loads
+ */
+$(document).ready(function () {
+    if (window.location.pathname !== '/head-to-head') {
+        return;
+    }
+    const hashes = getUrlVars();
+    const celeb1 = hashes.celeb1.replaceAll('%20', ' ')
+    const celeb2 = hashes.celeb2.replaceAll('%20', ' ')
+    $('#title-h2h').html(`CelebBattles - ${celeb1} | ${celeb2}`);
+
+    $.get('../../rankings.json', function (myJson) {
+        $('#h2h-header').html(`${celeb1} | ${celeb2}`)
+
+        $('#h2h-celeb-1-img').attr('src', `assets/img/${celeb1}.jpg`);
+        $('#h2h-celeb-2-img').attr('src', `assets/img/${celeb2}.jpg`);
+
+        $('#h2h-celeb-1-href').attr('href', `https://celebbattles.github.io/details?name=${celeb1}`);
+        $('#h2h-celeb-2-href').attr('href', `https://celebbattles.github.io/details?name=${celeb2}`);
+
+        const c1score = myJson[celeb1]['h2h'][celeb2];
+        const c2score = myJson[celeb2]['h2h'][celeb1];
+        $('#h2h-celeb-1-score').html(c1score === undefined ? 0 : c1score.split(',')[1]);
+        $('#h2h-celeb-2-score').html(c2score === undefined ? 0 : c2score.split(',')[1]);
+
+        $('#h2h-celeb-1-rank').html(myJson[celeb1]['rank']);
+        $('#h2h-celeb-2-rank').html(myJson[celeb2]['rank']);
+
+        $('#h2h-celeb-1-hrank').html(myJson[celeb1]['hrank']);
+        $('#h2h-celeb-2-hrank').html(myJson[celeb2]['hrank']);
+
+        $('#h2h-celeb-1-rat').html(myJson[celeb1]['rat']);
+        $('#h2h-celeb-2-rat').html(myJson[celeb2]['rat']);
+
+        $('#h2h-celeb-1-orat').html(myJson[celeb1]['opp']);
+        $('#h2h-celeb-2-orat').html(myJson[celeb2]['opp']);
+
+        $('#h2h-celeb-1-num').html(myJson[celeb1]['num']);
+        $('#h2h-celeb-2-num').html(myJson[celeb2]['num']);
+
+        $('#h2h-celeb-1-per').html(myJson[celeb1]['winPer']);
+        $('#h2h-celeb-2-per').html(myJson[celeb2]['winPer']);
+    });
+});
+
 // Read a page's GET URL variables and return them as an associative array.
 function getUrlVars() {
     var vars = [], hash;
