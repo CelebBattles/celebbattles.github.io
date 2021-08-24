@@ -228,10 +228,10 @@ $(document).ready(function () {
 });
 
 /**
- * Load celeb information when head-to-head page loads
+ * Load celeb information when compare page loads
  */
 $(document).ready(function () {
-    if (window.location.pathname !== '/head-to-head') {
+    if (window.location.pathname !== '/compare') {
         return;
     }
     const hashes = getUrlVars();
