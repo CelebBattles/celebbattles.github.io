@@ -286,32 +286,36 @@ function getUrlVars() {
 }
 
 // Search
-// $(document).ready(function () {
-//     $.ajaxSetup({ cache: false });
+$(document).ready(function () {
+    $.ajaxSetup({ cache: false });
 
-//     $.get('http://127.0.0.1:5000', function (myJson) {
-//         var keys = []
-//         myJson = JSON.parse(myJson)
-//         for (var k in myJson) {
-//             keys.push(k)
-//         }
+    $.get('../../rankings.json', function (myJson) {
+        var keys = []
+        for (var k in myJson) {
+            keys.push(k)
+        }
 
-//         $('#search').keyup(function () {
-//             $('#result').html('');
-//             var searchField = $('#search').val();
+        $('#search').keyup(function () {
+            $('#result').html('');
+            var searchField = $('#search').val();
 
-//             if (searchField === '') {
-//                 $('#result').html('');
-//                 return;
-//             }
+            if (searchField === '') {
+                $('#result').html('');
+                return;
+            }
 
-//             var expression = new RegExp(searchField, "i");
+            var cnt = 0;
+            $.each(keys, function (key, value) {
+                if (cnt >= 15) {
+                    return
+                }
 
-//             $.each(keys, function (key, value) {
-//                 if (value.search(expression) != -1) {
-//                     $('#result').append(`<li class="list-group-item link-class">${value}</li>`);
-//                 }
-//             })
-//         });
-//     })
-// });
+                if (value.toLowerCase().startsWith(searchField.toLowerCase())) {
+                    cnt++
+                    $('#result').append(`<li class="list-group-item"><a class="search-result" 
+                    href="https://celebbattles.github.io/details?name=${value}"  target="_blank">${value}</a></li>`);
+                }
+            })
+        });
+    })
+});
