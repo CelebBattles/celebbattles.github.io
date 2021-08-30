@@ -313,7 +313,7 @@ $(document).ready(function () {
                 if (value.toLowerCase().startsWith(searchField.toLowerCase())) {
                     cnt++
                     $('#result').append(`<li class="list-group-item"><a class="search-result" 
-                    href="https://celebbattles.github.io/details?name=${value}"  target="_blank">${value}</a></li>`);
+                    href="https://celebbattles.github.io/details?name=${value}">${value}</a></li>`);
                 }
             })
         });
