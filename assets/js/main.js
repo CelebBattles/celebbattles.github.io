@@ -147,7 +147,7 @@
  * Load leaderboard when leaderboard page loads
  */
 $(document).ready(function () {
-    $.get('../../rankings.json', function (myJson) {
+    $.get('../../rankings', function (myJson) {
         if (window.location.pathname !== '/leaderboard') {
             return;
         }
@@ -178,6 +178,9 @@ $(document).ready(function () {
             info: false,
             bFilter: false
         });
+
+        $('.loading').hide();
+        $('#leaderboard-holder').show();
     });
 });
 
