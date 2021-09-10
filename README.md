@@ -3,6 +3,6 @@
 Libraries used
 
 - Bootstrap for layout
-- JQuery for event handling
+- JQuery for all the dynamic stuff
 
 ![Website screenshot](https://i.imgur.com/gMMpBGS.jpg)
