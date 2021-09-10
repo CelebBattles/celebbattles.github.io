@@ -147,7 +147,7 @@
  * Load leaderboard when leaderboard page loads
  */
 $(document).ready(function () {
-    $.get('../../rankings', function (myJson) {
+    $.get('../../rankings.json', function (myJson) {
         if (window.location.pathname !== '/leaderboard') {
             return;
         }
