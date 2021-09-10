@@ -144,6 +144,44 @@
 })()
 
 /**
+ * Load leaderboard when leaderboard page loads
+ */
+$(document).ready(function () {
+    $.get('../../rankings.json', function (myJson) {
+        if (window.location.pathname !== '/leaderboard') {
+            return;
+        }
+        var i = 0;
+        for (var name in myJson) {
+            i += 1;
+            const row = $('<tr/>', { 'class': 'leaderboard-row' });
+
+            const rankd = $('<td/>').html(`<a href="https://celebbattles.github.io/details?name=${name}" class="leaderboard-link" target="_blank">${i}</a>`);
+            row.append(rankd);
+
+            const named = $('<td/>').html(`<a href="https://celebbattles.github.io/details?name=${name}" class="leaderboard-link" target="_blank">${name}</a>`);
+            row.append(named);
+
+            const ratingd = $('<td/>').html(`<a href="https://celebbattles.github.io/details?name=${name}" class="leaderboard-link" target="_blank">${myJson[name]['rat']}</a>`);
+            row.append(ratingd);
+
+            const numd = $('<td/>').html(`<a href="https://celebbattles.github.io/details?name=${name}" class="leaderboard-link" target="_blank">${myJson[name]['num']}</a>`);
+            row.append(numd);
+
+            const winPerd = $('<td/>').html(`<a href="https://celebbattles.github.io/details?name=${name}" class="leaderboard-link" target="_blank">${myJson[name]['winPer']}%</a>`);
+            row.append(winPerd);
+
+            $('#leaderboard').append(row);
+        }
+        $('#leaderboard').DataTable({
+            paging: false,
+            info: false,
+            bFilter: false
+        });
+    });
+});
+
+/**
  * Load images of top celebs when index page loads
  */
 $(document).ready(function () {
@@ -151,7 +189,6 @@ $(document).ready(function () {
         if (window.location.pathname !== '/') {
             return;
         }
-
         var i = 0;
         for (const celeb in myJson) {
             const imgDiv = $('<div/>', { 'class': 'member-img' })

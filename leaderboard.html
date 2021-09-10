@@ -25,9 +25,11 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+  <link href='https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css' rel='stylesheet'>
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
 </head>
 
 <body>
@@ -68,7 +70,7 @@
     <section class="breadcrumbs">
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Top Celebs</h2>
+          <h2>Leaderboard</h2>
           <div>
             <input id="search" class="search-bar" autocomplete="off" placeholder="Search">
             <ul id="result" class="search-list"></ul>
@@ -77,13 +79,24 @@
       </div>
 
     </section>
-    <section class="team">
+    <section class="team leaderboard-team">
       <div class="container">
-        <div id="col-holder" class="row"></div>
+        <div id="leaderboard-holder" class="row">
+          <table id="leaderboard" class="table table-dark leaderboard">
+            <thead>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>Rating</th>
+              <th># of Battles</th>
+              <th>Win %</th>
+            </thead>
+          </table>
+        </div>
       </div>
       </div>
     </section>
   </main>
+
   <footer id="footer">
     <div class="container">
       <div class="copyright">
