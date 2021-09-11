@@ -176,7 +176,18 @@ $(document).ready(function () {
             i += 1;
             const row = $('<tr/>', { 'class': 'leaderboard-row' });
 
-            const rankd = $('<td/>').html(`<a href="https://celebbattles.github.io/details?name=${name}" class="leaderboard-link" target="_blank">${i}</a>`);
+            let rankChange;
+
+            if (myJson[name]['rchange'] === "-") {
+                rankChange = "";
+            } else if (myJson[name]['rchange'].includes('▼')) {
+                rankChange = `<p style="display:inline;color:#ff1e1e;font-size:90%">${myJson[name]['rchange']}</p>`
+            } else {
+                rankChange = `<p style="display:inline;color:#04c604;font-size:90%">${myJson[name]['rchange']}</p>`
+            }
+
+            const rankd = $('<td/>').html(`<a href="https://celebbattles.github.io/details?name=${name}" 
+            class="leaderboard-link" target="_blank">${i} ${rankChange} </a>`);
             row.append(rankd);
 
             const named = $('<td/>').html(`<a href="https://celebbattles.github.io/details?name=${name}" class="leaderboard-link" target="_blank">${name}</a>`);
@@ -191,15 +202,15 @@ $(document).ready(function () {
             const winPerd = $('<td/>').html(`<a href="https://celebbattles.github.io/details?name=${name}" class="leaderboard-link" target="_blank">${myJson[name]['winPer']}%</a>`);
             row.append(winPerd);
 
-            const rankchanged = $('<td/>').html(`<a href="https://celebbattles.github.io/details?name=${name}" class="leaderboard-link" target="_blank">${myJson[name]['rchange']}</a>`);
-            row.append(rankchanged);
-
             $('#leaderboard').append(row);
         }
         $('#leaderboard').DataTable({
             paging: false,
             info: false,
-            bFilter: false
+            bFilter: false,
+            columnDefs: [
+                { "type": "num", "targets": 0 }
+            ]
         });
 
         $('.loading').hide();
