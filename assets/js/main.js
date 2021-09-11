@@ -191,6 +191,9 @@ $(document).ready(function () {
             const winPerd = $('<td/>').html(`<a href="https://celebbattles.github.io/details?name=${name}" class="leaderboard-link" target="_blank">${myJson[name]['winPer']}%</a>`);
             row.append(winPerd);
 
+            const rankchanged = $('<td/>').html(`<a href="https://celebbattles.github.io/details?name=${name}" class="leaderboard-link" target="_blank">${myJson[name]['rchange']}</a>`);
+            row.append(rankchanged);
+
             $('#leaderboard').append(row);
         }
         $('#leaderboard').DataTable({
