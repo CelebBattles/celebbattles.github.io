@@ -281,6 +281,7 @@ $(document).ready(function () {
         const best_str = `<a class="name-link" href="https://celebbattles.github.io/details?name=${best[0]}">${best[0]}</a> <br> ${best[1]} battles, ${Number(best[1]) - Number(best[2])} wins (${Math.round((Number(best[1]) - Number(best[2])) / Number(best[1]) * 100 * 10) / 10}%)`
         const worst = myJson[celeb]['worst'].split(",")
         const worst_str = `<a class="name-link" href="https://celebbattles.github.io/details?name=${worst[0]}">${worst[0]}</a> <br> ${worst[1]} battles, ${Number(worst[1]) - Number(worst[2])} wins (${Math.round((Number(worst[1]) - Number(worst[2])) / Number(worst[1]) * 100 * 10) / 10}%)`
+        const battle_link = `<a class="name-link" href="https://www.reddit.com/r/CelebBattles/search?q=${celeb.replaceAll(' ', '+')}&restrict_sr=on&include_over_18=on&sort=new&t=all" target="_blank">Go to Reddit</a> <img src="assets/img/external-link-square-alt-solid.svg" class="external-link"></img>`
 
         $('#celeb-name').html(celeb)
         $('#celeb-img').attr('src', `assets/img/${celeb}.jpg`);
@@ -295,6 +296,7 @@ $(document).ready(function () {
         $('#freq-oppo').html(freq_str)
         $('#best-score').html(best_str)
         $('#worst-score').html(worst_str)
+        $('#battles').html(battle_link)
     });
 
     // Make button unclickable
