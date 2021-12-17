@@ -15,5 +15,5 @@ body{font-family:Montserrat;color:#fff}a{color:#fff;text-decoration:none}.font-p
 }
 @media (max-width:768px)
 {
-    .slideshow{width: 80%;}
+    .slideshow{width: 100%;}
 }
