@@ -7,3 +7,13 @@ body{font-family:Montserrat;color:#fff}a{color:#fff;text-decoration:none}.font-p
 {
     .external-link{width: 6%;}
 }
+
+.slideshow {
+    height: 550px;
+    width: 100%;
+    overflow:hidden;
+}
+@media (max-width:768px)
+{
+    .slideshow{width: 80%;}
+}
