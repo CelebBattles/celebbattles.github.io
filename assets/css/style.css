@@ -9,11 +9,15 @@ body{font-family:Montserrat;color:#fff}a{color:#fff;text-decoration:none}.font-p
 }
 
 .slideshow {
-    height: 550px;
+    height: 600px;
     width: 100%;
     overflow:hidden;
 }
 @media (max-width:768px)
 {
     .slideshow{width: 100%;}
+}
+
+.wrapper.svelte-1hntiji .hero .goto.svelte-1hntiji{
+    display: none !important;
 }

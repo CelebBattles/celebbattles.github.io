@@ -284,7 +284,8 @@ $(document).ready(function () {
         const battle_link = `<a class="name-link" href="https://www.reddit.com/r/CelebBattles/search?q=${celeb.replaceAll(' ', '+')}&restrict_sr=on&include_over_18=on&sort=new&t=all" target="_blank">Go to Reddit</a> <img src="assets/img/external-link-square-alt-solid.svg" class="external-link"></img>`
 
         $('#celeb-name').html(celeb)
-        $('#celeb-img').attr('data', `https://www.redditpx.com/r/${celeb === 'Taylor Swift' ? 'WorshipTaylorSwift' : celeb.replaceAll('-', '')}`);
+        $('#celeb-img').attr('src', `assets/img/${celeb}.jpg`);
+        $('#celeb-slideshow').attr('data', `https://www.redditpx.com/r/${celeb === 'Taylor Swift' ? 'WorshipTaylorSwift' : celeb.replaceAll('-', '')}`);
         $('#rank').html(myJson[celeb]['rank'])
         $('#rank-banner').html(`RANK ${myJson[celeb]['rank']}`)
         $('#h-rank').html(myJson[celeb]['hrank'])
