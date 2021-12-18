@@ -319,6 +319,9 @@ $(document).ready(function () {
     $.get('../../rankings.json', function (myJson) {
         $('#h2h-header').html(`${celeb1} | ${celeb2}`)
 
+        const searchLink = `https://www.redditpx.com/r/CelebBattles/search?q=${celeb1}+vs+${celeb2}&restrict_sr=on&include_over_18=on&sort=relevance&t=all`
+        $('#battle-slideshow').attr('data', searchLink);
+
         $('#h2h-celeb-1-img').attr('src', `assets/img/${celeb1}.jpg`);
         $('#h2h-celeb-2-img').attr('src', `assets/img/${celeb2}.jpg`);
 
