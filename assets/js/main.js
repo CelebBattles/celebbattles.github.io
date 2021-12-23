@@ -274,6 +274,11 @@ $(document).ready(function () {
     const celeb = hashes.name.replaceAll('%20', ' ')
     $('#title-details').html(`CelebBattles - ${celeb}`);
 
+    const alt_subs = {
+        'Taylor Swift': 'WorshipTaylorSwift',
+        'Anya Taylor-Joy': 'Anya_TaylorJoy'
+    }
+
     $.get('../../rankings.json', function (myJson) {
         const freq = myJson[celeb]['freq'].split(",")
         const freq_str = `<a class="name-link" href="https://celebbattles.github.io/details?name=${freq[0]}">${freq[0]}</a> <br> ${freq[1]} battles, ${Number(freq[1]) - Number(freq[2])} wins (${Math.round((Number(freq[1]) - Number(freq[2])) / Number(freq[1]) * 100 * 10) / 10}%)`
@@ -285,7 +290,7 @@ $(document).ready(function () {
 
         $('#celeb-name').html(celeb)
         $('#celeb-img').attr('src', `assets/img/${celeb}.jpg`);
-        $('#celeb-slideshow').attr('data', `https://www.redditpx.com/r/${celeb === 'Taylor Swift' ? 'WorshipTaylorSwift' : celeb}`);
+        $('#celeb-slideshow').attr('data', `https://www.redditpx.com/r/${alt_subs[celeb] ? alt_subs[celeb] : celeb.replaceAll('-', '')}`);
         $('#rank').html(myJson[celeb]['rank'])
         $('#rank-banner').html(`RANK ${myJson[celeb]['rank']}`)
         $('#h-rank').html(myJson[celeb]['hrank'])
