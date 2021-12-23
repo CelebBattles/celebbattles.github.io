@@ -285,7 +285,7 @@ $(document).ready(function () {
 
         $('#celeb-name').html(celeb)
         $('#celeb-img').attr('src', `assets/img/${celeb}.jpg`);
-        $('#celeb-slideshow').attr('data', `https://www.redditpx.com/r/${celeb === 'Taylor Swift' ? 'WorshipTaylorSwift' : celeb.replaceAll('-', '')}`);
+        $('#celeb-slideshow').attr('data', `https://www.redditpx.com/r/${celeb === 'Taylor Swift' ? 'WorshipTaylorSwift' : celeb}`);
         $('#rank').html(myJson[celeb]['rank'])
         $('#rank-banner').html(`RANK ${myJson[celeb]['rank']}`)
         $('#h-rank').html(myJson[celeb]['hrank'])
