@@ -1171,10 +1171,10 @@ ul li a {
 	color: #fff;
 }
 a.info-link{
-	color: blue;
+	color: #00f3ff;
 }
 a.info-link:visited{
-    color: blue;
+    color: #00f3ff;
 }
 .ruler {
 	border: 0; 
