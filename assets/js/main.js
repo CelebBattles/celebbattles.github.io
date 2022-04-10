@@ -152,7 +152,7 @@ $(document).ready(function () {
             return;
         }
 
-        $('#lastupdated').html(`Leaderboard is updated every Sunday.`);
+        $('#lastupdated').html(`Updated every Sunday`);
 
         var i = 0;
         for (var name in myJson) {
