@@ -147,12 +147,29 @@
  * Load leaderboard when leaderboard page loads
  */
 $(document).ready(function () {
-    $.get('../../rankings.json', function (myJson) {
+    $.get('../../metadata.json', function (myJson) {
         if (window.location.pathname !== '/leaderboard') {
             return;
         }
 
-        $('#lastupdated').html(`Updated every Sunday`);
+        const lastUpdateEpoch = myJson['lastUpdated'];
+        const currentEpoch = new Date().valueOf() / 1000;
+
+        const durationInHours = Math.round((currentEpoch - lastUpdateEpoch) / 3600);
+
+        if (durationInHours < 24) {
+            $('#lastupdated').html(`Updated ${durationInHours} hours ago`);
+        } else if (durationInHours < 48) {
+            $('#lastupdated').html(`Updated 1 day ago`);
+        } else {
+            $('#lastupdated').html(`Updated ${Math.round(durationInHours / 24)} days ago`);
+        }
+    });
+
+    $.get('../../rankings.json', function (myJson) {
+        if (window.location.pathname !== '/leaderboard') {
+            return;
+        }
 
         var i = 0;
         for (var name in myJson) {
