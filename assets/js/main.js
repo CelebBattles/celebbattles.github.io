@@ -304,7 +304,7 @@ $(document).ready(function () {
         $('#worst-score').html(worst_str)
         $('#battles').html(battle_link)
 
-        $.get('../../rating__histories.json', function (ratingJson) {
+        $.get('../../rating_histories.json', function (ratingJson) {
             if (window.location.pathname !== '/details') {
                 return;
             }
@@ -321,8 +321,20 @@ $(document).ready(function () {
                 },
                 line: {
                     width: 3
-                }
-            };
+                },
+            }
+            let trace1 = {
+                x: ratingJson['time_axis'].map(epochSecond => {
+                    const date = new Date(epochSecond * 1000);
+                    return date;
+                }),
+                y: Array(ratingJson[celeb].length).fill(Math.max.apply(Math, ratingJson[celeb])),
+                type: 'scatter',
+                line: {
+                    width: 0
+                },
+                fill: 'tonexty'
+            }
             let layout = {
                 showlegend: false,
                 plot_bgcolor: "#262626",
@@ -332,13 +344,16 @@ $(document).ready(function () {
                 },
                 yaxis: {
                     gridcolor: 'rgba(255, 255, 255, 0.1);',
-                    autorange: 'reversed'
+                    autorange: 'reversed',
+                    title: {
+                        text: 'Rank'
+                    }
                 },
                 xaxis: {
                     gridcolor: 'rgba(255, 255, 255, 0.1);',
                 }
             };
-            Plotly.newPlot('plotlyDiv', [trace], layout);
+            Plotly.newPlot('plotlyDiv', [trace, trace1], layout);
         });
     });
 
