@@ -310,6 +310,7 @@ $(document).ready(function () {
             }
 
             let trace = {
+                name: 'Rank',
                 x: ratingJson['time_axis'].map(epochSecond => {
                     const date = new Date(epochSecond * 1000);
                     return date;
