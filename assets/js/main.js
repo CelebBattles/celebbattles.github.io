@@ -330,6 +330,9 @@ $(document).ready(function () {
                 }),
                 y: Array(ratingJson[celeb].length).fill(Math.max.apply(Math, ratingJson[celeb])),
                 type: 'scatter',
+                marker: {
+                    color: '#b90f2e'
+                },
                 line: {
                     width: 0
                 },
