@@ -411,6 +411,55 @@ $(document).ready(function () {
 
         $('#h2h-celeb-1-per').html(myJson[celeb1]['winPer']);
         $('#h2h-celeb-2-per').html(myJson[celeb2]['winPer']);
+
+        $.get('../../rating_histories.json', function (ratingJson) {
+            if (window.location.pathname !== '/compare') {
+                return;
+            }
+
+            xaxis = ratingJson['time_axis'].map(epochSecond => {
+                const date = new Date(epochSecond * 1000);
+                return date;
+            })
+
+            let trace1 = {
+                name: celeb1,
+                x: xaxis,
+                y: ratingJson[celeb1],
+                type: 'scatter',
+                line: {
+                    width: 2
+                },
+            }
+            let trace2 = {
+                name: celeb2,
+                x: xaxis,
+                y: ratingJson[celeb2],
+                type: 'scatter',
+                line: {
+                    width: 2
+                },
+            }
+            let layout = {
+                showlegend: true,
+                plot_bgcolor: "#262626",
+                paper_bgcolor: "#262626",
+                font: {
+                    color: 'white'
+                },
+                yaxis: {
+                    gridcolor: 'rgba(255, 255, 255, 0.1);',
+                    autorange: 'reversed',
+                    title: {
+                        text: 'Rank'
+                    }
+                },
+                xaxis: {
+                    gridcolor: 'rgba(255, 255, 255, 0.1);',
+                }
+            };
+            Plotly.newPlot('comparePlotlyDiv', [trace1, trace2], layout);
+        });
     });
 });
 
