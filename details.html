@@ -12,6 +12,9 @@
         gtag('config', 'UA-168647005-1');
     </script>
 
+    <!-- Load plotly.js into the DOM -->
+    <script src='https://cdn.plot.ly/plotly-2.18.2.min.js'></script>
+
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title id="title-details">CelebBattles - details</title>
@@ -142,6 +145,15 @@
                         </table>
                     </div>
                 </div>
+
+                <br>
+                <hr>
+
+                <div class="row">
+                    <h4>Ranking change over time</h4>
+                    <div id='plotlyDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
+                </div>
+
                 <br>
                 <hr>
                 <div class="row">

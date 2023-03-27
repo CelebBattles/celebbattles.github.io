@@ -303,6 +303,43 @@ $(document).ready(function () {
         $('#best-score').html(best_str)
         $('#worst-score').html(worst_str)
         $('#battles').html(battle_link)
+
+        $.get('../../rating__histories.json', function (ratingJson) {
+            if (window.location.pathname !== '/details') {
+                return;
+            }
+
+            let trace = {
+                x: ratingJson['time_axis'].map(epochSecond => {
+                    const date = new Date(epochSecond * 1000);
+                    return date;
+                }),
+                y: ratingJson[celeb],
+                type: 'scatter',
+                marker: {
+                    color: '#b90f2e'
+                },
+                line: {
+                    width: 3
+                }
+            };
+            let layout = {
+                showlegend: false,
+                plot_bgcolor: "#262626",
+                paper_bgcolor: "#262626",
+                font: {
+                    color: 'white'
+                },
+                yaxis: {
+                    gridcolor: 'rgba(255, 255, 255, 0.1);',
+                    autorange: 'reversed'
+                },
+                xaxis: {
+                    gridcolor: 'rgba(255, 255, 255, 0.1);',
+                }
+            };
+            Plotly.newPlot('plotlyDiv', [trace], layout);
+        });
     });
 
     // Make button unclickable
