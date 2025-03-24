@@ -129,6 +129,19 @@
     <div id="root"></div>
 
     <script type="text/babel">
+        // Add base URL handling at the top of the script
+        const getBasePath = () => {
+            // Get the repository name from the URL
+            const pathArray = window.location.pathname.split('/');
+            const repoName = pathArray[1];
+            return window.location.hostname === 'localhost' ? '' : `/${repoName}`;
+        };
+
+        const getAssetPath = (path) => {
+            const basePath = getBasePath();
+            return `${basePath}/${path}`;
+        };
+
         // Theme context
         const ThemeContext = React.createContext({
             isDark: false,
@@ -220,7 +233,7 @@
             );
         };
 
-        // Simple router component
+        // Update the Router component
         const Router = ({ children }) => {
             const [path, setPath] = React.useState(window.location.search);
 
@@ -257,7 +270,7 @@
                 >
                     <div className="p-4">
                         <img 
-                            src={`assets/img/${name}.jpg`}
+                            src={getAssetPath(`assets/img/${name}.jpg`)}
                             alt={name}
                             className="w-full h-64 object-cover rounded-lg"
                             onError={(e) => {
@@ -284,7 +297,7 @@
             const [dynamicBattles, setDynamicBattles] = React.useState(0);
 
             React.useEffect(() => {
-                fetch('./rankings.json')
+                fetch(getAssetPath('rankings.json'))
                     .then(response => {
                         if (!response.ok) {
                             throw new Error('Failed to fetch rankings');
@@ -414,7 +427,7 @@
                                             >
                                                 <div className="relative">
                                                     <img 
-                                                        src={`assets/img/${celeb.name}.jpg`}
+                                                        src={getAssetPath(`assets/img/${celeb.name}.jpg`)}
                                                         alt={celeb.name}
                                                         className="w-full h-64 object-cover rounded-lg"
                                                         onError={(e) => {
@@ -479,7 +492,7 @@
             const fetchCelebDetails = React.useCallback((celebName) => {
                 setLoading(true);
                 setError(null);
-                fetch('./rankings.json')
+                fetch(getAssetPath('rankings.json'))
                     .then(response => {
                         if (!response.ok) throw new Error('Failed to fetch rankings');
                         return response.json();
@@ -539,7 +552,7 @@
                         <div>
                             <div className="bg-dark-card rounded-lg border border-gray-800 h-full p-4">
                                 <img 
-                                    src={`assets/img/${name}.jpg`}
+                                    src={getAssetPath(`assets/img/${name}.jpg`)}
                                     alt={name}
                                     className="w-full h-full object-cover rounded-lg"
                                     onError={(e) => {
@@ -711,7 +724,7 @@
             const searchRef = React.useRef(null);
 
             React.useEffect(() => {
-                fetch('./rankings.json')
+                fetch(getAssetPath('rankings.json'))
                     .then(response => response.json())
                     .then(data => {
                         setAllCelebs(Object.keys(data));
@@ -786,7 +799,7 @@
             const celebsPerPage = 500;
 
             React.useEffect(() => {
-                fetch('./rankings.json')
+                fetch(getAssetPath('rankings.json'))
                     .then(response => {
                         if (!response.ok) throw new Error('Failed to fetch rankings');
                         return response.json();
@@ -906,7 +919,7 @@
             const chartInstance = React.useRef(null);
 
             React.useEffect(() => {
-                fetch('./rating_histories.json')
+                fetch(getAssetPath('rating_histories.json'))
                     .then(response => response.json())
                     .then(data => {
                         // Filter out null/undefined values and get valid data points
@@ -1078,8 +1091,8 @@
             // Fetch both celebs' details
             React.useEffect(() => {
                 Promise.all([
-                    fetch('./rankings.json').then(res => res.json()),
-                    fetch('./rating_histories.json').then(res => res.json())
+                    fetch(getAssetPath('rankings.json')).then(res => res.json()),
+                    fetch(getAssetPath('rating_histories.json')).then(res => res.json())
                 ])
                 .then(([rankings, histories]) => {
                     const celebData1 = rankings[celeb1];
@@ -1296,7 +1309,7 @@
                         <div className="bg-dark-card rounded-lg border border-gray-800 p-4 flex flex-col">
                             <div className="flex-1">
                                 <img 
-                                    src={`assets/img/${celeb1}.jpg`}
+                                    src={getAssetPath(`assets/img/${celeb1}.jpg`)}
                                     alt={celeb1}
                                     className="w-full h-full object-cover rounded-lg"
                                     onError={(e) => {
@@ -1420,7 +1433,7 @@
                         <div className="bg-dark-card rounded-lg border border-gray-800 p-4 flex flex-col">
                             <div className="flex-1">
                                 <img 
-                                    src={`assets/img/${celeb2}.jpg`}
+                                    src={getAssetPath(`assets/img/${celeb2}.jpg`)}
                                     alt={celeb2}
                                     className="w-full h-full object-cover rounded-lg"
                                     onError={(e) => {
