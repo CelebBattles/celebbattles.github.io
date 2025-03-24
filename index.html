@@ -229,11 +229,40 @@
                     const newPath = window.location.search;
                     setPath(newPath);
                     
-                    // Track page view in Google Analytics
+                    // Track page view in Google Analytics with the full path
+                    const fullPath = window.location.pathname + newPath;
                     gtag('config', 'UA-168647005-1', {
-                        page_path: window.location.pathname + newPath
+                        page_title: getPageTitle(newPath),
+                        page_path: fullPath
                     });
                 };
+
+                // Function to get page title based on path
+                const getPageTitle = (path) => {
+                    const params = new URLSearchParams(path);
+                    const page = params.get('page');
+                    const name = params.get('name');
+                    const celeb1 = params.get('celeb1');
+                    const celeb2 = params.get('celeb2');
+
+                    if (page === 'leaderboard') {
+                        return 'CelebBattles - Leaderboard';
+                    }
+                    if (page === 'details' && name) {
+                        return `CelebBattles - ${decodeURIComponent(name)}`;
+                    }
+                    if (page === 'compare' && celeb1 && celeb2) {
+                        return `CelebBattles - ${decodeURIComponent(celeb1)} vs ${decodeURIComponent(celeb2)}`;
+                    }
+                    return 'CelebBattles - Home';
+                };
+
+                // Track initial page view
+                const initialPath = window.location.pathname + window.location.search;
+                gtag('config', 'UA-168647005-1', {
+                    page_title: getPageTitle(window.location.search),
+                    page_path: initialPath
+                });
 
                 window.addEventListener('popstate', handleLocationChange);
                 return () => window.removeEventListener('popstate', handleLocationChange);
