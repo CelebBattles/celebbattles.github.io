@@ -224,56 +224,67 @@
         const Router = ({ children }) => {
             const [path, setPath] = React.useState(window.location.search);
 
-            React.useEffect(() => {
-                const handleLocationChange = () => {
-                    const newPath = window.location.search;
-                    setPath(newPath);
-                    
-                    // Get the page title
-                    const pageTitle = getPageTitle(newPath);
-                    
-                    // Update document title
-                    document.title = pageTitle;
-                    
-                    // Track page view in Google Analytics with the full path
-                    const fullPath = window.location.pathname + newPath;
-                    gtag('config', 'UA-168647005-1', {
-                        page_title: pageTitle,
-                        page_path: fullPath
-                    });
-                };
+            // Function to get page title based on path
+            const getPageTitle = (path) => {
+                const params = new URLSearchParams(path);
+                const page = params.get('page');
+                const name = params.get('name');
+                const celeb1 = params.get('celeb1');
+                const celeb2 = params.get('celeb2');
 
-                // Function to get page title based on path
-                const getPageTitle = (path) => {
-                    const params = new URLSearchParams(path);
-                    const page = params.get('page');
-                    const name = params.get('name');
-                    const celeb1 = params.get('celeb1');
-                    const celeb2 = params.get('celeb2');
+                if (page === 'leaderboard') {
+                    return 'CelebBattles - Leaderboard';
+                }
+                if (page === 'details' && name) {
+                    return `CelebBattles - ${decodeURIComponent(name)}`;
+                }
+                if (page === 'compare' && celeb1 && celeb2) {
+                    return `CelebBattles - ${decodeURIComponent(celeb1)} vs ${decodeURIComponent(celeb2)}`;
+                }
+                return 'CelebBattles - Home';
+            };
 
-                    if (page === 'leaderboard') {
-                        return 'CelebBattles - Leaderboard';
-                    }
-                    if (page === 'details' && name) {
-                        return `CelebBattles - ${decodeURIComponent(name)}`;
-                    }
-                    if (page === 'compare' && celeb1 && celeb2) {
-                        return `CelebBattles - ${decodeURIComponent(celeb1)} vs ${decodeURIComponent(celeb2)}`;
-                    }
-                    return 'CelebBattles - Home';
-                };
-
-                // Track initial page view and set initial title
-                const initialPath = window.location.pathname + window.location.search;
-                const initialTitle = getPageTitle(window.location.search);
-                document.title = initialTitle;
+            // Function to handle page tracking
+            const handlePageChange = (newPath) => {
+                setPath(newPath);
+                
+                // Get the page title
+                const pageTitle = getPageTitle(newPath);
+                
+                // Update document title
+                document.title = pageTitle;
+                
+                // Track page view in Google Analytics with the full path
+                const fullPath = window.location.pathname + newPath;
                 gtag('config', 'UA-168647005-1', {
-                    page_title: initialTitle,
-                    page_path: initialPath
+                    page_title: pageTitle,
+                    page_path: fullPath
                 });
+            };
 
-                window.addEventListener('popstate', handleLocationChange);
-                return () => window.removeEventListener('popstate', handleLocationChange);
+            React.useEffect(() => {
+                // Track initial page view and set initial title
+                handlePageChange(window.location.search);
+
+                // Handle browser back/forward
+                const handlePopState = () => {
+                    handlePageChange(window.location.search);
+                };
+
+                // Override history.pushState
+                const originalPushState = history.pushState;
+                history.pushState = function() {
+                    originalPushState.apply(this, arguments);
+                    handlePageChange(window.location.search);
+                };
+
+                window.addEventListener('popstate', handlePopState);
+                
+                return () => {
+                    window.removeEventListener('popstate', handlePopState);
+                    // Restore original pushState
+                    history.pushState = originalPushState;
+                };
             }, []);
 
             return children(path);
