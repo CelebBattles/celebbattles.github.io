@@ -1,121 +1,1453 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168647005-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CelebBattles - Home</title>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168647005-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'UA-168647005-1');
-  </script>
-
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>CelebBattles</title>
-  <link rel="icon" type="image/png" href="tournaments/favicon.png" />
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        gtag('config', 'UA-168647005-1', {
+            page_path: window.location.pathname + window.location.search
+        });
+    </script>
+    
+    <!-- Montserrat Font -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    
+    <!-- React CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
+    
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Config -->
+    <script src="config.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            DEFAULT: config.colors.background,
+                            card: config.colors.card,
+                            header: config.colors.primary
+                        }
+                    },
+                    fontSize: config.typography.fontSize,
+                    fontFamily: config.typography.fontFamily
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+        :root {
+            --background-color: var(--config-background-color);
+            --text-color: var(--config-text-color);
+            --font-family: var(--config-font-family);
+            --header-color: var(--config-header-color);
+            --header-color-scrolled-start: var(--config-header-color-scrolled-start);
+            --header-color-scrolled-end: var(--config-header-color-scrolled-end);
+            --header-transition-duration: var(--config-header-transition-duration);
+        }
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: var(--font-family);
+        }
+        .uppercase-force {
+            text-transform: uppercase !important;
+        }
+        .header-transition {
+            transition: background-color var(--header-transition-duration) ease-in-out;
+        }
+        @keyframes headerColorTransitionDown {
+            0% { background-color: var(--header-color-scrolled-start); }
+            100% { background-color: var(--header-color-scrolled-end); }
+        }
+        @keyframes headerColorTransitionUp {
+            0% { background-color: var(--header-color-scrolled-end); }
+            100% { background-color: var(--header-color-scrolled-start); }
+        }
+        .header-scrolled {
+            animation: headerColorTransitionDown var(--header-transition-duration) forwards;
+            backdrop-filter: blur(8px);
+        }
+        .header-top {
+            animation: headerColorTransitionUp var(--header-transition-duration) forwards;
+        }
+        @keyframes numberChange {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            20% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            80% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .animate-number-change {
+            animation: numberChange 0.5s ease-out;
+        }
+    </style>
+    <script>
+        // Set CSS variables from config
+        document.documentElement.style.setProperty('--config-background-color', config.colors.background);
+        document.documentElement.style.setProperty('--config-text-color', config.colors.text.primary);
+        document.documentElement.style.setProperty('--config-font-family', config.typography.fontFamily.body);
+        document.documentElement.style.setProperty('--config-header-color', config.colors.header.default);
+        document.documentElement.style.setProperty('--config-header-color-scrolled-start', config.colors.header.scrolled.start);
+        document.documentElement.style.setProperty('--config-header-color-scrolled-end', config.colors.header.scrolled.end);
+        document.documentElement.style.setProperty('--config-header-transition-duration', config.transitions.header.duration);
+    </script>
+    
+    <!-- ShadcnUI styles (approximated with basic styles) -->
+    <link href="https://cdn.jsdelivr.net/npm/@radix-ui/themes@2.0.3/styles.css" rel="stylesheet">
 </head>
-
 <body>
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container d-flex justify-content-between align-items-center">
-      <div class="logo">
-        <h1 class="text-light"><a href="https://celebbattles.github.io/"><span>CelebBattles </span></a></h1>
+    <div id="root"></div>
 
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-      </div>
+    <script type="text/babel">
+        // Theme context
+        const ThemeContext = React.createContext({
+            isDark: false,
+            toggle: () => {}
+        });
 
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="active" href="https://celebbattles.github.io/">Home</a></li>
-          <li><a class="active" href="https://celebbattles.github.io/leaderboard">Leaderboard</a></li>
-          <li><a class="active" href="https://reddit.com/r/celebbattles">Reddit</a></li>
-          <li class="dropdown">
-            <a href="#"><span>Tournaments</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="https://www.reddit.com/r/CelebBattles/comments/brdyyl">Best Legs</a></li>
-              <li><a href="https://www.reddit.com/r/CelebBattles/comments/ccskuu/">Best Nude Debut</a></li>
-              <li><a href="https://www.reddit.com/r/CelebBattles/comments/disw6g">Best Bikini Body</a></li>
-              <li><a href="https://www.reddit.com/r/CelebBattles/comments/fkebom">Hottest TV Star</a></li>
-              <li><a href="https://celebbattles.github.io/tournaments/bestface">Best Face</a></li>
-              <li><a href="https://celebbattles.github.io/tournaments/latenightlegs">Late Night Legs</a></li>
-              <li><a href="https://celebbattles.github.io/tournaments/wc2021">Celeb World Cup 2021</a></li>
-              <li><a href="https://celebbattles.github.io/tournaments/underrated">Hottest Underrated Celeb</a></li>
-              <li><a href="https://celebbattles.github.io/tournaments/yogapants">Best Butt in Yoga Pants</a></li>
-              <li><a href="https://celebbattles.github.io/tournaments/teambattles">Team Battles</a></li>
-              <li><a href="https://celebbattles.github.io/tournaments/under25">Hottest Celeb Under 25</a></li>
-              <li><a href="https://celebbattles.github.io/tournaments/halloffamenudity">Hall of Fame Nudity</a></li>
-              <li><a href="https://celebbattles.github.io/tournaments/hottestathlete">Hottest Athlete</a></li>
-            </ul>
-          </li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav>
-    </div>
-  </header>
-  <main id="main">
-    <section class="breadcrumbs">
-      <div class="container">
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Top Celebs</h2>
-          <div>
-            <input id="search" class="search-bar" autocomplete="off" placeholder="Search">
-            <ul id="result" class="search-list"></ul>
-          </div>
-        </div>
-      </div>
+        const ThemeProvider = ({ children }) => {
+            const [isDark, setIsDark] = React.useState(
+                localStorage.getItem('theme') === 'dark'
+            );
 
-    </section>
-    <section class="team">
-      <div class="container">
-        <div id="col-holder" class="row"></div>
-      </div>
-      </div>
-    </section>
-  </main>
-  <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>CelebBattles</span></strong>. All Rights Reserved. <a href="https://celebbattles.github.io/privacy" style="color: #a2cce3;">Privacy Policy</a>
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer>
-  <!-- End Footer -->
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/purecounter/purecounter.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+            React.useEffect(() => {
+                if (isDark) {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                }
+            }, [isDark]);
+
+            return (
+                <ThemeContext.Provider value={{
+                    isDark,
+                    toggle: () => setIsDark(!isDark)
+                }}>
+                    {children}
+                </ThemeContext.Provider>
+            );
+        };
+
+        const ThemeToggle = () => {
+            const { isDark, toggle } = React.useContext(ThemeContext);
+            return (
+                <button
+                    onClick={toggle}
+                    className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                    aria-label="Toggle theme"
+                >
+                    {isDark ? (
+                        <svg className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
+                        </svg>
+                    ) : (
+                        <svg className="w-5 h-5 text-gray-800" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                        </svg>
+                    )}
+                </button>
+            );
+        };
+
+        // Update the ScrollToTop component
+        const ScrollToTop = () => {
+            const [isVisible, setIsVisible] = React.useState(false);
+
+            React.useEffect(() => {
+                const toggleVisibility = () => {
+                    if (window.pageYOffset > 300) {
+                        setIsVisible(true);
+                    } else {
+                        setIsVisible(false);
+                    }
+                };
+
+                window.addEventListener('scroll', toggleVisibility);
+                return () => window.removeEventListener('scroll', toggleVisibility);
+            }, []);
+
+            const scrollToTop = () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            };
+
+            return (
+                <button
+                    onClick={scrollToTop}
+                    className={`fixed bottom-4 right-4 bg-[rgba(30,67,86,1)] hover:bg-[rgba(30,67,86,0.9)] text-white p-3 rounded-full shadow-lg transition-all duration-300 ${
+                        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
+                    }`}
+                    aria-label="Scroll to top"
+                >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                    </svg>
+                </button>
+            );
+        };
+
+        // Simple router component
+        const Router = ({ children }) => {
+            const [path, setPath] = React.useState(window.location.search);
+
+            React.useEffect(() => {
+                const handleLocationChange = () => {
+                    const newPath = window.location.search;
+                    setPath(newPath);
+                    
+                    // Track page view in Google Analytics
+                    gtag('config', 'UA-168647005-1', {
+                        page_path: window.location.pathname + newPath
+                    });
+                };
+
+                window.addEventListener('popstate', handleLocationChange);
+                return () => window.removeEventListener('popstate', handleLocationChange);
+            }, []);
+
+            return children(path);
+        };
+
+        const CelebCard = ({ name, rank, rating, winPercentage, rankChange, onClick }) => {
+            const getRankChangeDisplay = (change) => {
+                if (change === '-') return '';
+                if (change.includes('▲')) return <span className="text-green-600">{change}</span>;
+                if (change.includes('▼')) return <span className="text-red-600">{change}</span>;
+                return change;
+            };
+
+            return (
+                <div 
+                    className="rounded-lg border border-gray-800 bg-dark-card text-white shadow-sm hover:shadow-lg transition-all duration-200 cursor-pointer"
+                    onClick={onClick}
+                >
+                    <div className="p-4">
+                        <img 
+                            src={`assets/img/${name}.jpg`}
+                            alt={name}
+                            className="w-full h-64 object-cover rounded-lg"
+                            onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.src = 'https://i.pinimg.com/736x/1b/2e/31/1b2e314e767a957a44ed8f992c6d9098.jpg';
+                            }}
+                        />
+                        <div className="mt-4">
+                            <h3 className="text-base font-normal text-left text-white uppercase-force">{name}</h3>
+                            <div className="text-sm text-gray-300 mt-1">
+                                Rank {rank}, ELO {rating} {getRankChangeDisplay(rankChange)}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const TopCelebs = ({ onCelebClick }) => {
+            const [celebs, setCelebs] = React.useState([]);
+            const [loading, setLoading] = React.useState(true);
+            const [error, setError] = React.useState(null);
+            const [stats, setStats] = React.useState(null);
+            const [dynamicBattles, setDynamicBattles] = React.useState(0);
+
+            React.useEffect(() => {
+                fetch('./rankings.json')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Failed to fetch rankings');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        const celebsArray = Object.entries(data)
+                            .map(([name, stats]) => ({
+                                name,
+                                rank: stats.rank,
+                                rating: Math.round(stats.rat),
+                                winPercentage: stats.winPer.toFixed(1),
+                                rankChange: stats.rchange,
+                                battles: stats.num
+                            }))
+                            .sort((a, b) => a.rank - b.rank);
+
+                        // Get top 32 for the grid
+                        setCelebs(celebsArray.slice(0, 32));
+                        
+                        // Calculate stats for highlights
+                        const totalBattles = Math.floor(celebsArray.reduce((sum, celeb) => sum + celeb.battles, 0) / 2);
+                        const mostBattles = celebsArray.reduce((max, celeb) => Math.max(max, celeb.battles), 0);
+                        const mostBattlesCeleb = celebsArray.find(celeb => celeb.battles === mostBattles);
+                        
+                        // Find the celebrity with the biggest rank improvement
+                        const topRiser = celebsArray.reduce((best, celeb) => {
+                            const change = celeb.rankChange;
+                            if (change && change.includes('▲')) {
+                                const value = parseInt(change.replace('▲', ''));
+                                if (!best || value > parseInt(best.change.replace('▲', ''))) {
+                                    return { name: celeb.name, change: change };
+                                }
+                            }
+                            return best;
+                        }, null) || { name: 'No changes', change: '-' };
+                        
+                        setStats({
+                            totalCelebs: celebsArray.length,
+                            totalBattles,
+                            mostBattlesCeleb,
+                            topRiser
+                        });
+                        setDynamicBattles(totalBattles);
+                        setLoading(false);
+                    })
+                    .catch(err => {
+                        setError(err.message);
+                        setLoading(false);
+                    });
+            }, []);
+
+            // Effect for dynamic battle count
+            React.useEffect(() => {
+                if (stats) {
+                    const interval = setInterval(() => {
+                        const shouldIncrement = Math.random() < 0.4; // 40% chance to increment (down from 70%)
+                        if (shouldIncrement) {
+                            const increment = Math.random() < 0.9 ? 1 : 2; // 90% chance for 1, 10% chance for 2
+                            setDynamicBattles(prev => prev + increment);
+                        }
+                    }, 1500); // Check every 1.5 seconds (up from 0.8 seconds)
+
+                    return () => clearInterval(interval);
+                }
+            }, [stats]);
+
+            if (loading) return <div className="py-12 px-4 text-center"><p className="text-xl">Loading celebrities...</p></div>;
+            if (error) return <div className="py-12 px-4 text-center text-red-600"><p className="text-xl">Error: {error}</p></div>;
+
+            return (
+                <>
+                    {/* Hero Section */}
+                    <section className="relative bg-gradient-to-b from-dark-header via-dark-header to-dark py-20 px-4">
+                        <div className="max-w-7xl mx-auto">
+                            <div className="grid md:grid-cols-2 gap-12">
+                                {/* Left Column - Title, Stats, and Top 4 */}
+                                <div className="space-y-8">
+                                    {/* Title and Description */}
+                                    <div>
+                                        <h1 className="text-4xl sm:text-5xl md:text-6xl font-normal text-white mb-6">
+                                            CelebBattles
+                                        </h1>
+                                        <p className="text-lg sm:text-xl text-gray-300 mb-8">
+                                            Discover and compare celebrity rankings based on community battles. 
+                                            Join the excitement and see who comes out on top!
+                                        </p>
+                                    </div>
+
+                                    {/* Stats Grid */}
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div className="bg-dark-card rounded-lg p-4 border border-gray-800">
+                                            <div className="text-2xl sm:text-3xl text-white mb-2">{stats.totalCelebs}</div>
+                                            <div className="text-sm text-gray-400">Celebrities</div>
+                                        </div>
+                                        <div className="bg-dark-card rounded-lg p-4 border border-gray-800">
+                                            <div className="relative h-10">
+                                                <div 
+                                                    key={dynamicBattles}
+                                                    className="absolute inset-0 flex items-center justify-start"
+                                                >
+                                                    <div className="text-2xl sm:text-3xl text-white animate-number-change">
+                                                        {dynamicBattles.toLocaleString()}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="text-sm text-gray-400">Total Battles</div>
+                                        </div>
+                                        <div className="bg-dark-card rounded-lg p-4 border border-gray-800">
+                                            <div className="text-lg text-white mb-2 truncate">{stats.mostBattlesCeleb.name}</div>
+                                            <div className="text-sm text-gray-400">Most Active ({stats.mostBattlesCeleb.battles} battles)</div>
+                                        </div>
+                                        <div className="bg-dark-card rounded-lg p-4 border border-gray-800">
+                                            <div className="text-lg text-white mb-2 truncate">{stats.topRiser.name}</div>
+                                            <div className="text-sm text-gray-400">Biggest Riser ({stats.topRiser.change})</div>
+                                        </div>
+                                    </div>
+
+                                    {/* Top 4 Preview */}
+                                    <div className="grid grid-cols-2 gap-3">
+                                        {celebs.slice(0, 4).map((celeb, index) => (
+                                            <div 
+                                                key={celeb.name}
+                                                className="relative transform transition-all duration-300 hover:scale-105"
+                                                onClick={() => onCelebClick(celeb.name)}
+                                            >
+                                                <div className="relative">
+                                                    <img 
+                                                        src={`assets/img/${celeb.name}.jpg`}
+                                                        alt={celeb.name}
+                                                        className="w-full h-64 object-cover rounded-lg"
+                                                        onError={(e) => {
+                                                            e.target.onerror = null;
+                                                            e.target.src = 'https://i.pinimg.com/736x/1b/2e/31/1b2e314e767a957a44ed8f992c6d9098.jpg';
+                                                        }}
+                                                    />
+                                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent rounded-lg"></div>
+                                                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                                                        <div className="flex items-center justify-between">
+                                                            <span className="text-white font-medium truncate">{celeb.name}</span>
+                                                            <span className="text-accent">#{index + 1}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Right Column - Recent Battles */}
+                                <div className="h-full flex flex-col">
+                                    <div className="bg-dark-card rounded-lg border border-gray-800 p-4 h-full">
+                                        <h2 className="text-xl font-normal text-white mb-4">Featured Battles</h2>
+                                        <div className="h-full">
+                                            <iframe
+                                                src="https://www.redditpx.com/r/CelebBattles/top/?sort=top&t=day"
+                                                className="w-full h-full rounded-lg"
+                                                style={{ minHeight: '600px' }}
+                                                title="Featured CelebBattles"
+                                                loading="lazy"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Top Celebs Grid */}
+                    <section className="py-12 px-4 max-w-7xl mx-auto">
+                        <h2 className="text-xl sm:text-2xl font-normal text-left mb-6 text-white uppercase-force pl-4">Top Celebs</h2>
+                        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+                            {celebs.slice(4).map((celeb) => (
+                                <CelebCard 
+                                    key={celeb.name}
+                                    {...celeb}
+                                    onClick={() => onCelebClick(celeb.name)}
+                                />
+                            ))}
+                        </div>
+                    </section>
+                </>
+            );
+        };
+
+        const CelebDetails = ({ name }) => {
+            const [details, setDetails] = React.useState(null);
+            const [loading, setLoading] = React.useState(true);
+            const [error, setError] = React.useState(null);
+
+            const fetchCelebDetails = React.useCallback((celebName) => {
+                setLoading(true);
+                setError(null);
+                fetch('./rankings.json')
+                    .then(response => {
+                        if (!response.ok) throw new Error('Failed to fetch rankings');
+                        return response.json();
+                    })
+                    .then(data => {
+                        const celebData = data[celebName];
+                        if (!celebData) throw new Error('Celebrity not found');
+                        setDetails(celebData);
+                        setLoading(false);
+                    })
+                    .catch(err => {
+                        setError(err.message);
+                        setLoading(false);
+                    });
+            }, []);
+
+            React.useEffect(() => {
+                fetchCelebDetails(name);
+            }, [name, fetchCelebDetails]);
+
+            // Add popstate event listener to handle browser back/forward
+            React.useEffect(() => {
+                const handlePopState = () => {
+                    const params = new URLSearchParams(window.location.search);
+                    const newName = params.get('name');
+                    if (newName) {
+                        fetchCelebDetails(newName);
+                    }
+                };
+
+                window.addEventListener('popstate', handlePopState);
+                return () => window.removeEventListener('popstate', handlePopState);
+            }, [fetchCelebDetails]);
+
+            if (loading) return <div className="py-12 px-4 text-center"><p className="text-xl">Loading details...</p></div>;
+            if (error) return (
+                <div className="py-12 px-4 text-center">
+                    <p className="text-xl text-red-600">Error: {error}</p>
+                    <button 
+                        onClick={() => window.history.back()}
+                        className="mt-4 px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent/80 transition-colors"
+                    >
+                        Go Back
+                    </button>
+                </div>
+            );
+            if (!details) return null;
+
+            const [freqOpp, freqBattles, freqWins] = details.freq.split(',');
+            const [bestOpp, bestBattles] = details.best.split(',');
+            const [worstOpp, worstBattles, worstLosses] = details.worst.split(',');
+
+            return (
+                <div className="max-w-7xl mx-auto py-8 px-4">
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {/* Left column - Image */}
+                        <div>
+                            <div className="bg-dark-card rounded-lg border border-gray-800 h-full p-4">
+                                <img 
+                                    src={`assets/img/${name}.jpg`}
+                                    alt={name}
+                                    className="w-full h-full object-cover rounded-lg"
+                                    onError={(e) => {
+                                        e.target.onerror = null;
+                                        e.target.src = 'https://i.pinimg.com/736x/1b/2e/31/1b2e314e767a957a44ed8f992c6d9098.jpg';
+                                    }}
+                                />
+                            </div>
+                        </div>
+                        
+                        {/* Middle and Right columns */}
+                        <div className="md:col-span-2 space-y-8">
+                            {/* Stats Grid */}
+                            <div className="grid md:grid-cols-2 gap-8">
+                                {/* Main Stats */}
+                                <div className="h-full">
+                                    <div className="bg-dark-card rounded-lg border border-gray-800 h-full p-6">
+                                        <h1 className="text-2xl sm:text-3xl font-normal text-white mb-6">{name}</h1>
+                                        <div className="grid grid-cols-2 gap-4">
+                                            <div className="col-span-2">
+                                                <div className="flex justify-between items-center p-3 bg-gray-800/50 rounded-lg">
+                                                    <span className="text-gray-400">Current Rank</span>
+                                                    <span className="text-xl font-medium text-white">#{details.rank}</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div className="p-3 bg-gray-800/30 rounded-lg">
+                                                <div className="text-sm text-gray-400">Best Rank</div>
+                                                <div className="text-lg text-white">#{details.hrank}</div>
+                                            </div>
+                                            
+                                            <div className="p-3 bg-gray-800/30 rounded-lg">
+                                                <div className="text-sm text-gray-400">Rating</div>
+                                                <div className="text-lg text-white">{Math.round(details.rat)}</div>
+                                            </div>
+                                            
+                                            <div className="p-3 bg-gray-800/30 rounded-lg">
+                                                <div className="text-sm text-gray-400">Battles</div>
+                                                <div className="text-lg text-white">{details.num}</div>
+                                            </div>
+                                            
+                                            <div className="p-3 bg-gray-800/30 rounded-lg">
+                                                <div className="text-sm text-gray-400">Win Rate</div>
+                                                <div className="text-lg text-white">{details.winPer}%</div>
+                                            </div>
+                                            
+                                            <div className="p-3 bg-gray-800/30 rounded-lg">
+                                                <div className="text-sm text-gray-400">Rating Deviation</div>
+                                                <div className="text-lg text-white">{details.dev}</div>
+                                            </div>
+                                            
+                                            <div className="p-3 bg-gray-800/30 rounded-lg">
+                                                <div className="text-sm text-gray-400">Avg Opponent Rating</div>
+                                                <div className="text-lg text-white">{details.opp}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Matchup Stats */}
+                                <div className="h-full">
+                                    <div className="bg-dark-card rounded-lg border border-gray-800 h-full p-6">
+                                        <div className="space-y-4">
+                                            <div>
+                                                <div className="text-sm text-gray-400 mb-2">Most Frequent Opponent</div>
+                                                <div className="flex justify-between items-center p-3 bg-gray-800/30 rounded-lg">
+                                                    <div>
+                                                        <a 
+                                                            href={`?page=details&name=${encodeURIComponent(freqOpp)}`}
+                                                            onClick={(e) => {
+                                                                e.preventDefault();
+                                                                window.history.pushState({}, '', `?page=details&name=${encodeURIComponent(freqOpp)}`);
+                                                                window.dispatchEvent(new PopStateEvent('popstate'));
+                                                            }}
+                                                            className="text-accent hover:text-accent/80 font-medium"
+                                                        >
+                                                            {freqOpp}
+                                                        </a>
+                                                        <div className="text-sm text-gray-400 mt-1">
+                                                            {freqBattles} battles, {freqWins} wins ({((freqWins/freqBattles)*100).toFixed(1)}%)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div>
+                                                <div className="text-sm text-gray-400 mb-2">Best Performance</div>
+                                                <div className="flex justify-between items-center p-3 bg-gray-800/30 rounded-lg">
+                                                    <div>
+                                                        <a 
+                                                            href={`?page=details&name=${encodeURIComponent(bestOpp)}`}
+                                                            onClick={(e) => {
+                                                                e.preventDefault();
+                                                                window.history.pushState({}, '', `?page=details&name=${encodeURIComponent(bestOpp)}`);
+                                                                window.dispatchEvent(new PopStateEvent('popstate'));
+                                                            }}
+                                                            className="text-accent hover:text-accent/80 font-medium"
+                                                        >
+                                                            {bestOpp}
+                                                        </a>
+                                                        <div className="text-sm text-gray-400 mt-1">
+                                                            {bestBattles} battles, {bestBattles} wins (100%)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div>
+                                                <div className="text-sm text-gray-400 mb-2">Toughest Opponent</div>
+                                                <div className="flex justify-between items-center p-3 bg-gray-800/30 rounded-lg">
+                                                    <div>
+                                                        <a 
+                                                            href={`?page=details&name=${encodeURIComponent(worstOpp)}`}
+                                                            onClick={(e) => {
+                                                                e.preventDefault();
+                                                                window.history.pushState({}, '', `?page=details&name=${encodeURIComponent(worstOpp)}`);
+                                                                window.dispatchEvent(new PopStateEvent('popstate'));
+                                                            }}
+                                                            className="text-accent hover:text-accent/80 font-medium"
+                                                        >
+                                                            {worstOpp}
+                                                        </a>
+                                                        <div className="text-sm text-gray-400 mt-1">
+                                                            {worstBattles} battles, {worstBattles - worstLosses} wins ({((worstBattles - worstLosses)/worstBattles*100).toFixed(1)}%)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {/* Compare With Section */}
+                                            <div className="mt-4">
+                                                <div className="text-sm text-gray-400 mb-2">Quick Compare</div>
+                                                <CompareWith currentCeleb={name} />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Ranking History Chart */}
+                            <div className="mt-8">
+                                <RankingHistory name={name} />
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Reddit Posts - Full Width Section */}
+                    <div className="mt-8">
+                        <div className="bg-dark-card rounded-lg border border-gray-800 p-6">
+                            <div className="aspect-video w-full">
+                                <iframe
+                                    src={`https://www.redditpx.com/r/${name.replace(/\s+/g, '')}`}
+                                    className="w-full h-full rounded-lg"
+                                    title={`Reddit posts for ${name}`}
+                                    loading="lazy"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const SearchBar = () => {
+            const [query, setQuery] = React.useState('');
+            const [suggestions, setSuggestions] = React.useState([]);
+            const [allCelebs, setAllCelebs] = React.useState([]);
+            const [showSuggestions, setShowSuggestions] = React.useState(false);
+            const searchRef = React.useRef(null);
+
+            React.useEffect(() => {
+                fetch('./rankings.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        setAllCelebs(Object.keys(data));
+                    });
+
+                // Add click outside listener to close suggestions
+                const handleClickOutside = (event) => {
+                    if (searchRef.current && !searchRef.current.contains(event.target)) {
+                        setShowSuggestions(false);
+                    }
+                };
+
+                document.addEventListener('mousedown', handleClickOutside);
+                return () => document.removeEventListener('mousedown', handleClickOutside);
+            }, []);
+
+            const handleSearch = (e) => {
+                const value = e.target.value;
+                setQuery(value);
+                setShowSuggestions(true);
+
+                if (value.length > 0) {
+                    const filtered = allCelebs.filter(celeb =>
+                        celeb.toLowerCase().includes(value.toLowerCase())
+                    ).slice(0, 5); // Limit to 5 suggestions
+                    setSuggestions(filtered);
+                } else {
+                    setSuggestions([]);
+                }
+            };
+
+            const handleSuggestionClick = (name) => {
+                setQuery('');
+                setSuggestions([]);
+                setShowSuggestions(false);
+                window.history.pushState({}, '', `?page=details&name=${encodeURIComponent(name)}`);
+                window.dispatchEvent(new PopStateEvent('popstate'));
+            };
+
+            return (
+                <div className="relative" ref={searchRef}>
+                    <input
+                        type="text"
+                        value={query}
+                        onChange={handleSearch}
+                        onFocus={() => setShowSuggestions(true)}
+                        placeholder="Search"
+                        className="w-48 sm:w-64 px-3 py-2 text-sm rounded-lg border border-gray-700 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-accent/70"
+                    />
+                    {showSuggestions && suggestions.length > 0 && (
+                        <div className="absolute z-10 w-full mt-1 bg-dark-card rounded-lg shadow-lg border border-gray-700">
+                            {suggestions.map((celeb) => (
+                                <div
+                                    key={celeb}
+                                    className="px-3 py-2 text-sm hover:bg-gray-800 cursor-pointer text-white truncate"
+                                    onClick={() => handleSuggestionClick(celeb)}
+                                >
+                                    {celeb}
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        const Leaderboard = () => {
+            const [celebs, setCelebs] = React.useState([]);
+            const [loading, setLoading] = React.useState(true);
+            const [error, setError] = React.useState(null);
+            const [currentPage, setCurrentPage] = React.useState(1);
+            const celebsPerPage = 500;
+
+            React.useEffect(() => {
+                fetch('./rankings.json')
+                    .then(response => {
+                        if (!response.ok) throw new Error('Failed to fetch rankings');
+                        return response.json();
+                    })
+                    .then(data => {
+                        const celebsArray = Object.entries(data)
+                            .map(([name, stats]) => ({
+                                name,
+                                rank: stats.rank,
+                                rating: Math.round(stats.rat),
+                                battles: stats.num,
+                                winPercentage: stats.winPer.toFixed(1),
+                                rankChange: stats.rchange
+                            }))
+                            .sort((a, b) => a.rank - b.rank);
+                        
+                        setCelebs(celebsArray);
+                        setLoading(false);
+                    })
+                    .catch(err => {
+                        setError(err.message);
+                        setLoading(false);
+                    });
+            }, []);
+
+            if (loading) return <div className="py-12 px-4 text-center"><p className="text-xl">Loading leaderboard...</p></div>;
+            if (error) return <div className="py-12 px-4 text-center text-red-600"><p className="text-xl">Error: {error}</p></div>;
+
+            const getRankChangeDisplay = (change) => {
+                if (change === '-') return '';
+                if (change.includes('▲')) return <span className="text-green-600">{change}</span>;
+                if (change.includes('▼')) return <span className="text-red-600">{change}</span>;
+                return change;
+            };
+
+            const totalPages = Math.ceil(celebs.length / celebsPerPage);
+            const startIndex = (currentPage - 1) * celebsPerPage;
+            const endIndex = startIndex + celebsPerPage;
+            const currentCelebs = celebs.slice(startIndex, endIndex);
+
+            return (
+                <div className="py-8 px-4 max-w-7xl mx-auto">
+                    <h2 className="text-xl sm:text-2xl font-normal text-left mb-6 text-white uppercase-force pl-4">Leaderboard</h2>
+                    
+                    {/* Table Container */}
+                    <div className="overflow-x-auto -mx-4 sm:mx-0">
+                        <div className="inline-block min-w-full align-middle">
+                            <table className="min-w-full bg-dark-card border border-gray-800 shadow-lg rounded-lg">
+                                <thead className="bg-gray-800/50">
+                                    <tr>
+                                        <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Rank</th>
+                                        <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Name</th>
+                                        <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Rating</th>
+                                        <th className="hidden sm:table-cell px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider"># of Battles</th>
+                                        <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Win %</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-gray-800">
+                                    {currentCelebs.map((celeb) => (
+                                        <tr 
+                                            key={celeb.name}
+                                            className="hover:bg-gray-800/30 cursor-pointer transition-colors"
+                                            onClick={() => {
+                                                window.history.pushState({}, '', `?page=details&name=${encodeURIComponent(celeb.name)}`);
+                                                window.dispatchEvent(new PopStateEvent('popstate'));
+                                            }}
+                                        >
+                                            <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-white">
+                                                <div className="flex items-center">
+                                                    <span className="font-medium">{celeb.rank}</span>
+                                                    <span className="ml-2">{getRankChangeDisplay(celeb.rankChange)}</span>
+                                                </div>
+                                            </td>
+                                            <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-accent hover:text-accent/80">{celeb.name}</td>
+                                            <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-white">{celeb.rating}</td>
+                                            <td className="hidden sm:table-cell px-6 py-4 whitespace-nowrap text-sm text-white">{celeb.battles}</td>
+                                            <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-white">{celeb.winPercentage}%</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    {/* Pagination Controls */}
+                    <div className="mt-6 flex items-center justify-between px-4">
+                        <div className="text-sm text-gray-400">
+                            Showing {startIndex + 1} to {Math.min(endIndex, celebs.length)} of {celebs.length} celebrities
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <button
+                                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                                disabled={currentPage === 1}
+                                className="px-3 py-1.5 text-sm rounded-lg border border-gray-700 bg-dark-card text-white hover:bg-gray-800/50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                            >
+                                Previous
+                            </button>
+                            <span className="text-sm text-gray-400">
+                                Page {currentPage} of {totalPages}
+                            </span>
+                            <button
+                                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                                disabled={currentPage === totalPages}
+                                className="px-3 py-1.5 text-sm rounded-lg border border-gray-700 bg-dark-card text-white hover:bg-gray-800/50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                            >
+                                Next
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const RankingHistory = ({ name }) => {
+            const [history, setHistory] = React.useState(null);
+            const chartRef = React.useRef(null);
+            const chartInstance = React.useRef(null);
+
+            React.useEffect(() => {
+                fetch('./rating_histories.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        // Filter out null/undefined values and get valid data points
+                        const validDataPoints = data.time_axis.map((time, index) => ({
+                            time,
+                            rating: data[name][index]
+                        })).filter(point => point.rating !== null && point.rating !== undefined);
+
+                        // Sort chronologically
+                        validDataPoints.sort((a, b) => a.time - b.time);
+
+                        setHistory({
+                            time_axis: validDataPoints.map(point => point.time),
+                            [name]: validDataPoints.map(point => point.rating)
+                        });
+                    })
+                    .catch(error => console.error('Error loading ranking history:', error));
+            }, [name]);
+
+            const formatDate = (timestamp) => {
+                const date = new Date(timestamp * 1000);
+                return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+            };
+
+            React.useEffect(() => {
+                if (history && chartRef.current) {
+                    if (chartInstance.current) {
+                        chartInstance.current.destroy();
+                    }
+
+                    const ctx = chartRef.current.getContext('2d');
+                    
+                    // Convert timestamps to formatted dates
+                    const dates = history.time_axis.map(formatDate);
+                    const rankings = history[name] || [];
+
+                    // Create new chart
+                    chartInstance.current = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: dates,
+                            datasets: [{
+                                label: 'Ranking',
+                                data: rankings,
+                                borderColor: '#b90f2e',
+                                backgroundColor: 'rgba(185, 15, 46, 0.1)',
+                                tension: 0.3,
+                                fill: true,
+                                pointRadius: 0,
+                                pointHoverRadius: 0,
+                                borderWidth: 2
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            interaction: {
+                                intersect: false,
+                                mode: 'index'
+                            },
+                            plugins: {
+                                title: {
+                                    display: false
+                                },
+                                legend: {
+                                    display: false
+                                },
+                                zoom: {
+                                    pan: {
+                                        enabled: true,
+                                        mode: 'x',
+                                        modifierKey: null
+                                    },
+                                    zoom: {
+                                        wheel: {
+                                            enabled: true
+                                        },
+                                        pinch: {
+                                            enabled: true
+                                        },
+                                        mode: 'x',
+                                        drag: {
+                                            enabled: true,
+                                            backgroundColor: 'rgba(185, 15, 46, 0.2)',
+                                            borderColor: 'rgba(185, 15, 46, 0.4)',
+                                            borderWidth: 1
+                                        }
+                                    }
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    reverse: true,
+                                    grid: {
+                                        color: 'rgba(255, 255, 255, 0.1)'
+                                    },
+                                    ticks: {
+                                        color: '#9ca3af',
+                                        font: {
+                                            family: 'Montserrat'
+                                        }
+                                    }
+                                },
+                                x: {
+                                    grid: {
+                                        color: 'rgba(255, 255, 255, 0.1)'
+                                    },
+                                    reverse: false,
+                                    ticks: {
+                                        color: '#9ca3af',
+                                        font: {
+                                            family: 'Montserrat'
+                                        },
+                                        maxRotation: 45,
+                                        minRotation: 45,
+                                        callback: function(val, index) {
+                                            return index % 3 === 0 ? this.getLabelForValue(val) : '';
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+
+                return () => {
+                    if (chartInstance.current) {
+                        chartInstance.current.destroy();
+                    }
+                };
+            }, [history, name]);
+
+            if (!history) return null;
+
+            const handleReset = () => {
+                if (chartInstance.current) {
+                    chartInstance.current.resetZoom();
+                }
+            };
+
+            return (
+                <div className="bg-dark-card rounded-lg border border-gray-800 p-6">
+                    <div className="flex justify-between items-center mb-4">
+                        <h3 className="text-base font-normal text-white">Ranking History</h3>
+                        <button
+                            onClick={handleReset}
+                            className="px-3 py-1 rounded text-sm bg-gray-700 text-gray-300 hover:bg-gray-600"
+                        >
+                            Reset View
+                        </button>
+                    </div>
+                    <div style={{ height: '300px' }}>
+                        <canvas ref={chartRef}></canvas>
+                    </div>
+                </div>
+            );
+        };
+
+        const ComparePage = ({ celeb1, celeb2 }) => {
+            const [details1, setDetails1] = React.useState(null);
+            const [details2, setDetails2] = React.useState(null);
+            const [history1, setHistory1] = React.useState(null);
+            const [history2, setHistory2] = React.useState(null);
+            const [loading, setLoading] = React.useState(true);
+            const [error, setError] = React.useState(null);
+            const chartRef = React.useRef(null);
+            const chartInstance = React.useRef(null);
+
+            // Fetch both celebs' details
+            React.useEffect(() => {
+                Promise.all([
+                    fetch('./rankings.json').then(res => res.json()),
+                    fetch('./rating_histories.json').then(res => res.json())
+                ])
+                .then(([rankings, histories]) => {
+                    const celebData1 = rankings[celeb1];
+                    const celebData2 = rankings[celeb2];
+                    
+                    if (!celebData1 || !celebData2) {
+                        throw new Error('One or both celebrities not found');
+                    }
+
+                    setDetails1(celebData1);
+                    setDetails2(celebData2);
+
+                    // Filter out null/undefined values for both celebs
+                    const validDataPoints = histories.time_axis.map((time, index) => ({
+                        time,
+                        rating1: histories[celeb1][index],
+                        rating2: histories[celeb2][index]
+                    })).filter(point => 
+                        (point.rating1 !== null && point.rating1 !== undefined) ||
+                        (point.rating2 !== null && point.rating2 !== undefined)
+                    );
+
+                    // Sort chronologically
+                    validDataPoints.sort((a, b) => a.time - b.time);
+
+                    const timeAxis = validDataPoints.map(point => point.time);
+                    const ratings1 = validDataPoints.map(point => point.rating1);
+                    const ratings2 = validDataPoints.map(point => point.rating2);
+
+                    setHistory1({ timeAxis, ratings: ratings1 });
+                    setHistory2({ timeAxis, ratings: ratings2 });
+                    setLoading(false);
+                })
+                .catch(err => {
+                    setError(err.message);
+                    setLoading(false);
+                });
+            }, [celeb1, celeb2]);
+
+            React.useEffect(() => {
+                if (history1 && history2 && chartRef.current) {
+                    if (chartInstance.current) {
+                        chartInstance.current.destroy();
+                    }
+
+                    const ctx = chartRef.current.getContext('2d');
+                    
+                    const formatDate = (timestamp) => {
+                        const date = new Date(timestamp * 1000);
+                        return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+                    };
+
+                    const dates = history1.timeAxis.map(formatDate);
+
+                    chartInstance.current = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: dates,
+                            datasets: [
+                                {
+                                    label: celeb1,
+                                    data: history1.ratings,
+                                    borderColor: '#b90f2e',
+                                    backgroundColor: 'rgba(185, 15, 46, 0.1)',
+                                    tension: 0.3,
+                                    fill: false,
+                                    pointRadius: 0,
+                                    pointHoverRadius: 0,
+                                    borderWidth: 2
+                                },
+                                {
+                                    label: celeb2,
+                                    data: history2.ratings,
+                                    borderColor: '#1E4356',
+                                    backgroundColor: 'rgba(30, 67, 86, 0.1)',
+                                    tension: 0.3,
+                                    fill: false,
+                                    pointRadius: 0,
+                                    pointHoverRadius: 0,
+                                    borderWidth: 2
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            interaction: {
+                                intersect: false,
+                                mode: 'index'
+                            },
+                            plugins: {
+                                title: {
+                                    display: false
+                                },
+                                legend: {
+                                    display: true,
+                                    position: 'top',
+                                    labels: {
+                                        color: '#ffffff',
+                                        font: {
+                                            family: 'Montserrat'
+                                        },
+                                        usePointStyle: true,
+                                        pointStyle: 'circle'
+                                    }
+                                },
+                                zoom: {
+                                    pan: {
+                                        enabled: true,
+                                        mode: 'x',
+                                        modifierKey: null
+                                    },
+                                    zoom: {
+                                        wheel: {
+                                            enabled: true
+                                        },
+                                        pinch: {
+                                            enabled: true
+                                        },
+                                        mode: 'x',
+                                        drag: {
+                                            enabled: true,
+                                            backgroundColor: 'rgba(185, 15, 46, 0.2)',
+                                            borderColor: 'rgba(185, 15, 46, 0.4)',
+                                            borderWidth: 1
+                                        }
+                                    }
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    reverse: true,
+                                    grid: {
+                                        color: 'rgba(255, 255, 255, 0.1)'
+                                    },
+                                    ticks: {
+                                        color: '#9ca3af',
+                                        font: {
+                                            family: 'Montserrat'
+                                        }
+                                    }
+                                },
+                                x: {
+                                    grid: {
+                                        color: 'rgba(255, 255, 255, 0.1)'
+                                    },
+                                    reverse: false,
+                                    ticks: {
+                                        color: '#9ca3af',
+                                        font: {
+                                            family: 'Montserrat'
+                                        },
+                                        maxRotation: 45,
+                                        minRotation: 45,
+                                        callback: function(val, index) {
+                                            return index % 3 === 0 ? this.getLabelForValue(val) : '';
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+
+                return () => {
+                    if (chartInstance.current) {
+                        chartInstance.current.destroy();
+                    }
+                };
+            }, [history1, history2, celeb1, celeb2]);
+
+            if (loading) return <div className="py-12 px-4 text-center"><p className="text-xl">Loading comparison...</p></div>;
+            if (error) return (
+                <div className="py-12 px-4 text-center">
+                    <p className="text-xl text-red-600">Error: {error}</p>
+                    <button 
+                        onClick={() => window.history.back()}
+                        className="mt-4 px-4 py-2 bg-accent text-white rounded-lg hover:bg-accent/80 transition-colors"
+                    >
+                        Go Back
+                    </button>
+                </div>
+            );
+
+            const handleReset = () => {
+                if (chartInstance.current) {
+                    chartInstance.current.resetZoom();
+                }
+            };
+
+            const StatComparison = ({ label, value1, value2 }) => {
+                const isValue1Better = parseFloat(value1) > parseFloat(value2);
+                return (
+                    <div className="grid grid-cols-3 gap-4 py-3 border-b border-gray-700 last:border-0">
+                        <div className="text-right">
+                            <span className={isValue1Better ? 'text-green-500' : 'text-white'}>
+                                {value1}
+                            </span>
+                        </div>
+                        <div className="text-center text-gray-400">{label}</div>
+                        <div className="text-left">
+                            <span className={!isValue1Better ? 'text-green-500' : 'text-white'}>
+                                {value2}
+                            </span>
+                        </div>
+                    </div>
+                );
+            };
+
+            return (
+                <div className="py-8 px-4 max-w-7xl mx-auto">
+                    <div className="grid md:grid-cols-3 gap-6">
+                        {/* Left Image */}
+                        <div className="bg-dark-card rounded-lg border border-gray-800 p-4 flex flex-col">
+                            <div className="flex-1">
+                                <img 
+                                    src={`assets/img/${celeb1}.jpg`}
+                                    alt={celeb1}
+                                    className="w-full h-full object-cover rounded-lg"
+                                    onError={(e) => {
+                                        e.target.onerror = null;
+                                        e.target.src = 'https://i.pinimg.com/736x/1b/2e/31/1b2e314e767a957a44ed8f992c6d9098.jpg';
+                                    }}
+                                />
+                            </div>
+                            <div className="mt-3 space-y-2">
+                                <a 
+                                    href={`?page=details&name=${encodeURIComponent(celeb1)}`}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        window.history.pushState({}, '', `?page=details&name=${encodeURIComponent(celeb1)}`);
+                                        window.dispatchEvent(new PopStateEvent('popstate'));
+                                    }}
+                                    className="block text-lg font-normal text-accent hover:text-accent/80 text-center"
+                                >
+                                    {celeb1}
+                                </a>
+                                <CompareWith currentCeleb={celeb1} otherCeleb={celeb2} position="left" />
+                            </div>
+                        </div>
+
+                        {/* Center Stats Column */}
+                        <div className="space-y-6">
+                            {/* Head to Head Record */}
+                            <div className="bg-dark-card rounded-lg border border-gray-800 p-4">
+                                <h3 className="text-lg font-normal text-white mb-4 text-center">Head to Head Record</h3>
+                                {details1.h2h && details1.h2h[celeb2] ? (
+                                    <div>
+                                        {/* Total Battles */}
+                                        <div className="text-center mb-4">
+                                            <div className="text-3xl font-medium text-white mb-1">
+                                                {details1.h2h[celeb2].split(',')[0]}
+                                            </div>
+                                            <div className="text-sm text-gray-400">Total Battles</div>
+                                        </div>
+
+                                        {/* Win Distribution */}
+                                        <div className="grid grid-cols-2 gap-3 text-center mb-4">
+                                            <div>
+                                                <div className="text-2xl font-medium text-white mb-1">
+                                                    {details1.h2h[celeb2].split(',')[1]}
+                                                </div>
+                                                <div className="text-sm text-gray-400">{celeb1}'s Wins</div>
+                                            </div>
+                                            <div>
+                                                <div className="text-2xl font-medium text-white mb-1">
+                                                    {details1.h2h[celeb2].split(',')[0] - details1.h2h[celeb2].split(',')[1]}
+                                                </div>
+                                                <div className="text-sm text-gray-400">{celeb2}'s Wins</div>
+                                            </div>
+                                        </div>
+
+                                        {/* Win Rates */}
+                                        <div className="grid grid-cols-2 gap-3 text-center">
+                                            <div className="p-2 bg-gray-800/30 rounded-lg">
+                                                <div className="text-lg text-white">
+                                                    {((details1.h2h[celeb2].split(',')[1] / details1.h2h[celeb2].split(',')[0]) * 100).toFixed(1)}%
+                                                </div>
+                                                <div className="text-xs text-gray-400">Win Rate</div>
+                                            </div>
+                                            <div className="p-2 bg-gray-800/30 rounded-lg">
+                                                <div className="text-lg text-white">
+                                                    {((details1.h2h[celeb2].split(',')[0] - details1.h2h[celeb2].split(',')[1]) / details1.h2h[celeb2].split(',')[0] * 100).toFixed(1)}%
+                                                </div>
+                                                <div className="text-xs text-gray-400">Win Rate</div>
+                                            </div>
+                                        </div>
+
+                                        {/* Visual Win Distribution */}
+                                        <div className="mt-4">
+                                            <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+                                                <div 
+                                                    className="h-full bg-accent"
+                                                    style={{
+                                                        width: `${(details1.h2h[celeb2].split(',')[1] / details1.h2h[celeb2].split(',')[0]) * 100}%`,
+                                                        transition: 'width 1s ease-in-out'
+                                                    }}
+                                                ></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className="text-center text-gray-400">
+                                        No direct battles recorded
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Career Stats Comparison */}
+                            <div className="bg-dark-card rounded-lg border border-gray-800 p-4">
+                                <h3 className="text-lg font-normal text-white mb-4 text-center">Career Stats</h3>
+                                <div className="space-y-3">
+                                    <div className="grid grid-cols-3 gap-2 text-center p-2 bg-gray-800/30 rounded-lg">
+                                        <div className="text-base text-white">#{details1.rank}</div>
+                                        <div className="text-sm text-gray-400">Current Rank</div>
+                                        <div className="text-base text-white">#{details2.rank}</div>
+                                    </div>
+                                    <div className="grid grid-cols-3 gap-2 text-center p-2 bg-gray-800/30 rounded-lg">
+                                        <div className="text-base text-white">#{details1.hrank}</div>
+                                        <div className="text-sm text-gray-400">Best Rank</div>
+                                        <div className="text-base text-white">#{details2.hrank}</div>
+                                    </div>
+                                    <div className="grid grid-cols-3 gap-2 text-center p-2 bg-gray-800/30 rounded-lg">
+                                        <div className="text-base text-white">{details1.winPer}%</div>
+                                        <div className="text-sm text-gray-400">Win Rate</div>
+                                        <div className="text-base text-white">{details2.winPer}%</div>
+                                    </div>
+                                    <div className="grid grid-cols-3 gap-2 text-center p-2 bg-gray-800/30 rounded-lg">
+                                        <div className="text-base text-white">{details1.num}</div>
+                                        <div className="text-sm text-gray-400">Total Battles</div>
+                                        <div className="text-base text-white">{details2.num}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Right Image */}
+                        <div className="bg-dark-card rounded-lg border border-gray-800 p-4 flex flex-col">
+                            <div className="flex-1">
+                                <img 
+                                    src={`assets/img/${celeb2}.jpg`}
+                                    alt={celeb2}
+                                    className="w-full h-full object-cover rounded-lg"
+                                    onError={(e) => {
+                                        e.target.onerror = null;
+                                        e.target.src = 'https://i.pinimg.com/736x/1b/2e/31/1b2e314e767a957a44ed8f992c6d9098.jpg';
+                                    }}
+                                />
+                            </div>
+                            <div className="mt-3 space-y-2">
+                                <a 
+                                    href={`?page=details&name=${encodeURIComponent(celeb2)}`}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        window.history.pushState({}, '', `?page=details&name=${encodeURIComponent(celeb2)}`);
+                                        window.dispatchEvent(new PopStateEvent('popstate'));
+                                    }}
+                                    className="block text-lg font-normal text-accent hover:text-accent/80 text-center"
+                                >
+                                    {celeb2}
+                                </a>
+                                <CompareWith currentCeleb={celeb2} otherCeleb={celeb1} position="right" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+    </script>
 </body>
-
 </html>
