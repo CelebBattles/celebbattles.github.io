@@ -12,8 +12,9 @@
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
+        // Initialize with default configs
         gtag('config', 'UA-168647005-1', {
-            page_path: window.location.pathname + window.location.search
+            send_page_view: false // Disable automatic page views
         });
     </script>
     
@@ -258,9 +259,19 @@
                 // Track page view in Google Analytics with the full path
                 const fullPath = window.location.pathname + newPath;
                 console.log('Tracking page view:', { title: pageTitle, path: fullPath });
+
+                // Send to GA using event
+                gtag('event', 'page_view', {
+                    page_title: pageTitle,
+                    page_path: fullPath,
+                    page_location: window.location.href
+                });
+
+                // Also send using config
                 gtag('config', 'UA-168647005-1', {
                     page_title: pageTitle,
-                    page_path: fullPath
+                    page_path: fullPath,
+                    page_location: window.location.href
                 });
             };
 
