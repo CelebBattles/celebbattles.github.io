@@ -1445,6 +1445,123 @@
                             </div>
                         </div>
                     </div>
+
+                    {/* Rating History Chart */}
+                    <div className="mt-6 bg-dark-card rounded-lg border border-gray-800 p-4">
+                        <div className="flex justify-between items-center mb-4">
+                            <h3 className="text-lg font-normal text-white">Ranking History</h3>
+                            <button
+                                onClick={handleReset}
+                                className="px-3 py-1 rounded text-sm bg-gray-700 text-gray-300 hover:bg-gray-600"
+                            >
+                                Reset View
+                            </button>
+                        </div>
+                        <div style={{ height: '400px' }}>
+                            <canvas ref={chartRef}></canvas>
+                        </div>
+                    </div>
+
+                    {/* Reddit Posts */}
+                    <div className="mt-6">
+                        <div className="bg-dark-card rounded-lg border border-gray-800 p-6">
+                            <div className="aspect-video w-full">
+                                <iframe
+                                    src={`https://www.redditpx.com/r/CelebBattles/search?q=${encodeURIComponent(celeb1)}+vs+${encodeURIComponent(celeb2)}&restrict_sr=on&include_over_18=on&sort=relevance&t=all`}
+                                    className="w-full h-full rounded-lg"
+                                    title={`Reddit battles between ${celeb1} and ${celeb2}`}
+                                    loading="lazy"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const CompareWith = ({ currentCeleb, otherCeleb, position }) => {
+            const [query, setQuery] = React.useState('');
+            const [suggestions, setSuggestions] = React.useState([]);
+            const [allCelebs, setAllCelebs] = React.useState([]);
+            const [showSuggestions, setShowSuggestions] = React.useState(false);
+            const searchRef = React.useRef(null);
+
+            React.useEffect(() => {
+                fetch('./rankings.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        setAllCelebs(Object.keys(data).filter(celeb => celeb !== currentCeleb && celeb !== otherCeleb));
+                    });
+
+                const handleClickOutside = (event) => {
+                    if (searchRef.current && !searchRef.current.contains(event.target)) {
+                        setShowSuggestions(false);
+                    }
+                };
+
+                document.addEventListener('mousedown', handleClickOutside);
+                return () => document.removeEventListener('mousedown', handleClickOutside);
+            }, [currentCeleb, otherCeleb]);
+                    
+            const handleSearch = (e) => {
+                const value = e.target.value;
+                setQuery(value);
+                setShowSuggestions(true);
+
+                if (value.length > 0) {
+                    const filtered = allCelebs
+                        .filter(celeb => celeb.toLowerCase().includes(value.toLowerCase()))
+                        .slice(0, 5);
+                    setSuggestions(filtered);
+                } else {
+                    setSuggestions([]);
+                }
+            };
+
+            const handleCompare = (selectedCeleb) => {
+                setQuery('');
+                setSuggestions([]);
+                setShowSuggestions(false);
+                if (position) {
+                    // We're in the compare page
+                    const newCeleb1 = position === 'left' ? selectedCeleb : otherCeleb;
+                    const newCeleb2 = position === 'right' ? selectedCeleb : currentCeleb;
+                    window.history.pushState({}, '', `?page=compare&celeb1=${encodeURIComponent(newCeleb1)}&celeb2=${encodeURIComponent(newCeleb2)}`);
+                } else {
+                    // We're in the details page
+                    window.history.pushState({}, '', `?page=compare&celeb1=${encodeURIComponent(currentCeleb)}&celeb2=${encodeURIComponent(selectedCeleb)}`);
+                }
+                window.dispatchEvent(new PopStateEvent('popstate'));
+            };
+
+            // Determine if we're in the compare page by checking if position prop exists
+            const placeholder = position ? "Switch to..." : "Compare with...";
+
+            return (
+                <div className="relative" ref={searchRef}>
+                    <div className="flex items-center gap-2">
+                        <input
+                            type="text"
+                            value={query}
+                            onChange={handleSearch}
+                            onFocus={() => setShowSuggestions(true)}
+                            placeholder={placeholder}
+                            className="w-full px-3 py-1.5 text-sm rounded-lg border border-gray-700 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-accent/70"
+                        />
+                    </div>
+                    {showSuggestions && suggestions.length > 0 && (
+                        <div className="absolute z-10 w-full mt-1 bg-dark-card rounded-lg shadow-lg border border-gray-700">
+                            {suggestions.map((celeb) => (
+                                <div
+                                    key={celeb}
+                                    className="px-3 py-2 text-sm hover:bg-gray-800 cursor-pointer text-white truncate"
+                                    onClick={() => handleCompare(celeb)}
+                                >
+                                    {celeb}
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             );
         };
