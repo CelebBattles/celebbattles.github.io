@@ -246,6 +246,7 @@
 
             // Function to handle page tracking
             const handlePageChange = (newPath) => {
+                console.log('Page change detected:', newPath);
                 setPath(newPath);
                 
                 // Get the page title
@@ -256,10 +257,17 @@
                 
                 // Track page view in Google Analytics with the full path
                 const fullPath = window.location.pathname + newPath;
+                console.log('Tracking page view:', { title: pageTitle, path: fullPath });
                 gtag('config', 'UA-168647005-1', {
                     page_title: pageTitle,
                     page_path: fullPath
                 });
+            };
+
+            // Create a navigation function that can be exposed globally
+            window.navigateTo = (newPath) => {
+                window.history.pushState({}, '', newPath);
+                handlePageChange(newPath);
             };
 
             React.useEffect(() => {
@@ -268,13 +276,7 @@
 
                 // Handle browser back/forward
                 const handlePopState = () => {
-                    handlePageChange(window.location.search);
-                };
-
-                // Override history.pushState
-                const originalPushState = history.pushState;
-                history.pushState = function() {
-                    originalPushState.apply(this, arguments);
+                    console.log('PopState event detected');
                     handlePageChange(window.location.search);
                 };
 
@@ -282,8 +284,6 @@
                 
                 return () => {
                     window.removeEventListener('popstate', handlePopState);
-                    // Restore original pushState
-                    history.pushState = originalPushState;
                 };
             }, []);
 
@@ -1631,8 +1631,12 @@
             }, []);
 
             const handleCelebClick = (name) => {
-                window.history.pushState({}, '', `?page=details&name=${encodeURIComponent(name)}`);
-                window.dispatchEvent(new PopStateEvent('popstate'));
+                const newPath = `?page=details&name=${encodeURIComponent(name)}`;
+                window.navigateTo(newPath);
+            };
+
+            const handleNavigation = (path) => {
+                window.navigateTo(path);
             };
 
             return (
@@ -1650,19 +1654,13 @@
                                     <nav className="flex flex-wrap justify-center items-center gap-2 sm:gap-6">
                                         <button
                                             className="px-3 py-2 text-sm sm:text-base text-white hover:text-gray-200 transition-colors uppercase-force"
-                                            onClick={() => {
-                                                window.history.pushState({}, '', '/');
-                                                window.dispatchEvent(new PopStateEvent('popstate'));
-                                            }}
+                                            onClick={() => handleNavigation('/')}
                                         >
                                             Home
                                         </button>
                                         <button
                                             className="px-3 py-2 text-sm sm:text-base text-white hover:text-gray-200 transition-colors uppercase-force"
-                                            onClick={() => {
-                                                window.history.pushState({}, '', '?page=leaderboard');
-                                                window.dispatchEvent(new PopStateEvent('popstate'));
-                                            }}
+                                            onClick={() => handleNavigation('?page=leaderboard')}
                                         >
                                             Leaderboard
                                         </button>
