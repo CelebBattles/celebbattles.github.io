@@ -129,19 +129,6 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        // Add base URL handling at the top of the script
-        const getBasePath = () => {
-            // Get the repository name from the URL
-            const pathArray = window.location.pathname.split('/');
-            const repoName = pathArray[1];
-            return window.location.hostname === 'localhost' ? '' : `/${repoName}`;
-        };
-
-        const getAssetPath = (path) => {
-            const basePath = getBasePath();
-            return `${basePath}/${path}`;
-        };
-
         // Theme context
         const ThemeContext = React.createContext({
             isDark: false,
@@ -233,7 +220,7 @@
             );
         };
 
-        // Update the Router component
+        // Simple router component
         const Router = ({ children }) => {
             const [path, setPath] = React.useState(window.location.search);
 
@@ -270,7 +257,7 @@
                 >
                     <div className="p-4">
                         <img 
-                            src={getAssetPath(`assets/img/${name}.jpg`)}
+                            src={`assets/img/${name}.jpg`}
                             alt={name}
                             className="w-full h-64 object-cover rounded-lg"
                             onError={(e) => {
@@ -297,7 +284,7 @@
             const [dynamicBattles, setDynamicBattles] = React.useState(0);
 
             React.useEffect(() => {
-                fetch(getAssetPath('rankings.json'))
+                fetch('./rankings.json')
                     .then(response => {
                         if (!response.ok) {
                             throw new Error('Failed to fetch rankings');
@@ -427,7 +414,7 @@
                                             >
                                                 <div className="relative">
                                                     <img 
-                                                        src={getAssetPath(`assets/img/${celeb.name}.jpg`)}
+                                                        src={`assets/img/${celeb.name}.jpg`}
                                                         alt={celeb.name}
                                                         className="w-full h-64 object-cover rounded-lg"
                                                         onError={(e) => {
@@ -492,7 +479,7 @@
             const fetchCelebDetails = React.useCallback((celebName) => {
                 setLoading(true);
                 setError(null);
-                fetch(getAssetPath('rankings.json'))
+                fetch('./rankings.json')
                     .then(response => {
                         if (!response.ok) throw new Error('Failed to fetch rankings');
                         return response.json();
@@ -552,7 +539,7 @@
                         <div>
                             <div className="bg-dark-card rounded-lg border border-gray-800 h-full p-4">
                                 <img 
-                                    src={getAssetPath(`assets/img/${name}.jpg`)}
+                                    src={`assets/img/${name}.jpg`}
                                     alt={name}
                                     className="w-full h-full object-cover rounded-lg"
                                     onError={(e) => {
@@ -724,7 +711,7 @@
             const searchRef = React.useRef(null);
 
             React.useEffect(() => {
-                fetch(getAssetPath('rankings.json'))
+                fetch('./rankings.json')
                     .then(response => response.json())
                     .then(data => {
                         setAllCelebs(Object.keys(data));
@@ -799,7 +786,7 @@
             const celebsPerPage = 500;
 
             React.useEffect(() => {
-                fetch(getAssetPath('rankings.json'))
+                fetch('./rankings.json')
                     .then(response => {
                         if (!response.ok) throw new Error('Failed to fetch rankings');
                         return response.json();
@@ -919,7 +906,7 @@
             const chartInstance = React.useRef(null);
 
             React.useEffect(() => {
-                fetch(getAssetPath('rating_histories.json'))
+                fetch('./rating_histories.json')
                     .then(response => response.json())
                     .then(data => {
                         // Filter out null/undefined values and get valid data points
@@ -1091,8 +1078,8 @@
             // Fetch both celebs' details
             React.useEffect(() => {
                 Promise.all([
-                    fetch(getAssetPath('rankings.json')).then(res => res.json()),
-                    fetch(getAssetPath('rating_histories.json')).then(res => res.json())
+                    fetch('./rankings.json').then(res => res.json()),
+                    fetch('./rating_histories.json').then(res => res.json())
                 ])
                 .then(([rankings, histories]) => {
                     const celebData1 = rankings[celeb1];
@@ -1309,7 +1296,7 @@
                         <div className="bg-dark-card rounded-lg border border-gray-800 p-4 flex flex-col">
                             <div className="flex-1">
                                 <img 
-                                    src={getAssetPath(`assets/img/${celeb1}.jpg`)}
+                                    src={`assets/img/${celeb1}.jpg`}
                                     alt={celeb1}
                                     className="w-full h-full object-cover rounded-lg"
                                     onError={(e) => {
@@ -1433,7 +1420,7 @@
                         <div className="bg-dark-card rounded-lg border border-gray-800 p-4 flex flex-col">
                             <div className="flex-1">
                                 <img 
-                                    src={getAssetPath(`assets/img/${celeb2}.jpg`)}
+                                    src={`assets/img/${celeb2}.jpg`}
                                     alt={celeb2}
                                     className="w-full h-full object-cover rounded-lg"
                                     onError={(e) => {
@@ -1461,6 +1448,105 @@
                 </div>
             );
         };
+
+        const App = () => {
+            const [isHeaderTransparent, setIsHeaderTransparent] = React.useState(false);
+
+            React.useEffect(() => {
+                const handleScroll = () => {
+                    if (window.scrollY > 20) {
+                        setIsHeaderTransparent(true);
+                    } else {
+                        setIsHeaderTransparent(false);
+                    }
+                };
+
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const handleCelebClick = (name) => {
+                window.history.pushState({}, '', `?page=details&name=${encodeURIComponent(name)}`);
+                window.dispatchEvent(new PopStateEvent('popstate'));
+            };
+
+            return (
+                <ThemeProvider>
+                    <div className="min-h-screen bg-dark transition-colors">
+                        <header 
+                            className={`fixed top-0 left-0 right-0 z-50 header-transition ${
+                                isHeaderTransparent 
+                                    ? 'header-scrolled shadow-lg' 
+                                    : 'header-top'
+                            }`}
+                        >
+                            <div className="max-w-7xl mx-auto py-4 px-4">
+                                <div className="flex justify-center items-center">
+                                    <nav className="flex flex-wrap justify-center items-center gap-2 sm:gap-6">
+                                        <button
+                                            className="px-3 py-2 text-sm sm:text-base text-white hover:text-gray-200 transition-colors uppercase-force"
+                                            onClick={() => {
+                                                window.history.pushState({}, '', '/');
+                                                window.dispatchEvent(new PopStateEvent('popstate'));
+                                            }}
+                                        >
+                                            Home
+                                        </button>
+                                        <button
+                                            className="px-3 py-2 text-sm sm:text-base text-white hover:text-gray-200 transition-colors uppercase-force"
+                                            onClick={() => {
+                                                window.history.pushState({}, '', '?page=leaderboard');
+                                                window.dispatchEvent(new PopStateEvent('popstate'));
+                                            }}
+                                        >
+                                            Leaderboard
+                                        </button>
+                                        <a
+                                            href="https://reddit.com/r/CelebBattles"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="px-3 py-2 text-sm sm:text-base text-white hover:text-gray-200 transition-colors uppercase-force"
+                                        >
+                                            Reddit
+                                        </a>
+                                        <SearchBar />
+                                    </nav>
+                                </div>
+                            </div>
+                        </header>
+                        <main className="pt-16">
+                            <Router>
+                                {(path) => {
+                                    const params = new URLSearchParams(path);
+                                    const page = params.get('page');
+                                    const name = params.get('name');
+                                    const celeb1 = params.get('celeb1');
+                                    const celeb2 = params.get('celeb2');
+                                    
+                                    if (page === 'leaderboard') {
+                                        return <Leaderboard />;
+                                    }
+                                    
+                                    if (page === 'details' && name) {
+                                        return <CelebDetails name={name} />;
+                                    }
+
+                                    if (page === 'compare' && celeb1 && celeb2) {
+                                        return <ComparePage celeb1={celeb1} celeb2={celeb2} />;
+                                    }
+                                    
+                                    return <TopCelebs onCelebClick={handleCelebClick} />;
+                                }}
+                            </Router>
+                        </main>
+                        <ScrollToTop />
+                    </div>
+                </ThemeProvider>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
     </script>
 </body>
 </html>
