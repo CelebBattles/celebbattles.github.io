@@ -229,10 +229,16 @@
                     const newPath = window.location.search;
                     setPath(newPath);
                     
+                    // Get the page title
+                    const pageTitle = getPageTitle(newPath);
+                    
+                    // Update document title
+                    document.title = pageTitle;
+                    
                     // Track page view in Google Analytics with the full path
                     const fullPath = window.location.pathname + newPath;
                     gtag('config', 'UA-168647005-1', {
-                        page_title: getPageTitle(newPath),
+                        page_title: pageTitle,
                         page_path: fullPath
                     });
                 };
@@ -257,10 +263,12 @@
                     return 'CelebBattles - Home';
                 };
 
-                // Track initial page view
+                // Track initial page view and set initial title
                 const initialPath = window.location.pathname + window.location.search;
+                const initialTitle = getPageTitle(window.location.search);
+                document.title = initialTitle;
                 gtag('config', 'UA-168647005-1', {
-                    page_title: getPageTitle(window.location.search),
+                    page_title: initialTitle,
                     page_path: initialPath
                 });
 
