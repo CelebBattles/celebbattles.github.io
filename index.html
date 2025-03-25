@@ -979,7 +979,20 @@
             const [loading, setLoading] = React.useState(true);
             const [error, setError] = React.useState(null);
             const [currentPage, setCurrentPage] = React.useState(1);
-            const celebsPerPage = 500;
+            const celebsPerPage = 100;
+            const [imageUrls, setImageUrls] = React.useState({});
+
+            const handleImageError = async (name) => {
+                try {
+                    const webImageUrl = await fetchCelebImageUrl(name);
+                    setImageUrls(prev => ({
+                        ...prev,
+                        [name]: webImageUrl
+                    }));
+                } catch (error) {
+                    console.error('Error fetching image:', error);
+                }
+            };
 
             React.useEffect(() => {
                 fetch('./rankings.json')
@@ -1056,7 +1069,17 @@
                                                     <span className="ml-2">{getRankChangeDisplay(celeb.rankChange)}</span>
                                                 </div>
                                             </td>
-                                            <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-accent hover:text-accent/80">{celeb.name}</td>
+                                            <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-accent hover:text-accent/80">
+                                                <div className="flex items-center gap-3">
+                                                    <img 
+                                                        src={imageUrls[celeb.name] || `assets/img/${celeb.name}.jpg`}
+                                                        alt={celeb.name}
+                                                        className="w-[50px] h-[50px] object-cover rounded-lg"
+                                                        onError={() => handleImageError(celeb.name)}
+                                                    />
+                                                    {celeb.name}
+                                                </div>
+                                            </td>
                                             <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-white">{celeb.rating}</td>
                                             <td className="hidden sm:table-cell px-6 py-4 whitespace-nowrap text-sm text-white">{celeb.battles}</td>
                                             <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-white">{celeb.winPercentage}%</td>
