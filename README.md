@@ -10,15 +10,12 @@ A modern web application that tracks and displays celebrity battle rankings base
 - **Interactive Charts**: Visualize rating history with zoomable and pannable charts
 - **Recent Form**: Track recent performance with color-coded battle indicators
 - **Mobile Responsive**: Fully responsive design that works on all devices
-- **Real-time Updates**: Dynamic battle counter showing community activity
 
 ## Technology Stack
 
 - React 18
 - Chart.js with zoom plugin
 - Tailwind CSS
-- Google Analytics
-- Reddit API integration
 
 ## Components
 
