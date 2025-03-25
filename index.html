@@ -301,7 +301,101 @@
             return children(path);
         };
 
-        const CelebCard = ({ name, rank, rating, winPercentage, rankChange, onClick }) => {
+        const fetchCelebImageUrl = async (name) => {
+            try {
+                // Try tvmaze API first (good for actresses/actors)
+                try {
+                    const tvmazeResponse = await fetch(`https://api.tvmaze.com/search/people?q=${encodeURIComponent(name)}`);
+                    const tvmazeData = await tvmazeResponse.json();
+                    if (tvmazeData.length > 0 && tvmazeData[0].person.image) {
+                        const imageUrl = tvmazeData[0].person.image.original || tvmazeData[0].person.image.medium;
+                        if (imageUrl) return imageUrl;
+                    }
+                } catch (error) {
+                    console.error('TVMaze API error:', error);
+                }
+
+                // Try TMDB API (using their free image CDN)
+                try {
+                    const tmdbImageUrl = `https://image.tmdb.org/t/p/original/${name.replace(/\s+/g, '_').toLowerCase()}.jpg`;
+                    const response = await fetch(tmdbImageUrl);
+                    if (response.ok) return tmdbImageUrl;
+                } catch (error) {
+                    console.error('TMDB CDN error:', error);
+                }
+
+                // Try wikimedia commons with size constraints
+                const searchQueries = [
+                    `${encodeURIComponent(name)} actress model`,
+                    `${encodeURIComponent(name)} celebrity`,
+                    `${encodeURIComponent(name)} portrait`,
+                    name
+                ];
+
+                for (const query of searchQueries) {
+                    const wikiResponse = await fetch(`https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrnamespace=6&gsrsearch=${query}&gsrlimit=10&prop=imageinfo&iiprop=url|dimensions&format=json&origin=*`);
+                    const wikiData = await wikiResponse.json();
+                    
+                    if (wikiData.query && wikiData.query.pages) {
+                        const images = Object.values(wikiData.query.pages)
+                            .filter(page => {
+                                const info = page.imageinfo && page.imageinfo[0];
+                                // Filter by size constraints and format
+                                return info && 
+                                       info.width >= 600 && info.width <= 2000 &&
+                                       info.height >= 600 && info.height <= 2000 &&
+                                       !info.url.toLowerCase().endsWith('.svg') &&
+                                       !info.url.toLowerCase().endsWith('.gif');
+                            })
+                            .sort((a, b) => {
+                                // Prefer images closer to 1000x1000
+                                const aSize = Math.abs(1000 - a.imageinfo[0].width) + Math.abs(1000 - a.imageinfo[0].height);
+                                const bSize = Math.abs(1000 - b.imageinfo[0].width) + Math.abs(1000 - b.imageinfo[0].height);
+                                return aSize - bSize;
+                            });
+
+                        if (images.length > 0) {
+                            return images[0].imageinfo[0].url;
+                        }
+                    }
+                }
+
+                // Try imgur as last resort
+                const imgurResponse = await fetch(`https://api.imgur.com/3/gallery/search?q=${encodeURIComponent(name)}+portrait+face`, {
+                    headers: {
+                        'Authorization': 'Client-ID 6c2e0fc12b8ea52'
+                    }
+                });
+                const imgurData = await imgurResponse.json();
+                
+                if (imgurData.data && imgurData.data.length > 0) {
+                    const images = imgurData.data
+                        .filter(item => {
+                            // Check if it's a direct image and meets size constraints
+                            return !item.is_album && 
+                                   item.images && 
+                                   item.images[0] &&
+                                   item.images[0].width >= 600 && 
+                                   item.images[0].width <= 2000 &&
+                                   item.images[0].height >= 600 && 
+                                   item.images[0].height <= 2000;
+                        })
+                        .sort((a, b) => b.score - a.score);
+                    
+                    if (images.length > 0) {
+                        return images[0].images[0].link;
+                    }
+                }
+
+                // If all fails, return default image
+                throw new Error('No suitable image found');
+            } catch (error) {
+                console.error('Error fetching celeb image:', error);
+                return 'https://i.imgur.com/ydosTGt.jpg'; // Default image
+            }
+        };
+
+        const CelebCard = ({ name, rank, rating, winPercentage, rankChange, onClick, imageUrl, onImageError }) => {
             const getRankChangeDisplay = (change) => {
                 if (change === '-') return '';
                 if (change.includes('▲')) return <span className="text-green-600">{change}</span>;
@@ -316,13 +410,10 @@
                 >
                     <div className="p-4">
                         <img 
-                            src={`assets/img/${name}.jpg`}
+                            src={imageUrl}
                             alt={name}
                             className="w-full h-64 object-cover rounded-lg"
-                            onError={(e) => {
-                                e.target.onerror = null;
-                                e.target.src = 'https://i.pinimg.com/736x/1b/2e/31/1b2e314e767a957a44ed8f992c6d9098.jpg';
-                            }}
+                            onError={onImageError}
                         />
                         <div className="mt-4">
                             <h3 className="text-base font-normal text-left text-white uppercase-force">{name}</h3>
@@ -341,6 +432,19 @@
             const [error, setError] = React.useState(null);
             const [stats, setStats] = React.useState(null);
             const [dynamicBattles, setDynamicBattles] = React.useState(0);
+            const [imageUrls, setImageUrls] = React.useState({});
+
+            const handleImageError = async (name) => {
+                try {
+                    const webImageUrl = await fetchCelebImageUrl(name);
+                    setImageUrls(prev => ({
+                        ...prev,
+                        [name]: webImageUrl
+                    }));
+                } catch (error) {
+                    console.error('Error fetching image:', error);
+                }
+            };
 
             React.useEffect(() => {
                 fetch('./rankings.json')
@@ -473,13 +577,10 @@
                                             >
                                                 <div className="relative">
                                                     <img 
-                                                        src={`assets/img/${celeb.name}.jpg`}
+                                                        src={imageUrls[celeb.name] || `assets/img/${celeb.name}.jpg`}
                                                         alt={celeb.name}
                                                         className="w-full h-64 object-cover rounded-lg"
-                                                        onError={(e) => {
-                                                            e.target.onerror = null;
-                                                            e.target.src = 'https://i.pinimg.com/736x/1b/2e/31/1b2e314e767a957a44ed8f992c6d9098.jpg';
-                                                        }}
+                                                        onError={() => handleImageError(celeb.name)}
                                                     />
                                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent rounded-lg"></div>
                                                     <div className="absolute bottom-0 left-0 right-0 p-4">
@@ -522,6 +623,8 @@
                                     key={celeb.name}
                                     {...celeb}
                                     onClick={() => onCelebClick(celeb.name)}
+                                    imageUrl={imageUrls[celeb.name] || `assets/img/${celeb.name}.jpg`}
+                                    onImageError={() => handleImageError(celeb.name)}
                                 />
                             ))}
                         </div>
@@ -535,6 +638,12 @@
             const [loading, setLoading] = React.useState(true);
             const [error, setError] = React.useState(null);
             const [form, setForm] = React.useState(null);
+            const [imageUrl, setImageUrl] = React.useState(`assets/img/${name}.jpg`);
+
+            // Update imageUrl when name changes
+            React.useEffect(() => {
+                setImageUrl(`assets/img/${name}.jpg`);
+            }, [name]);
 
             const fetchCelebDetails = React.useCallback((celebName) => {
                 setLoading(true);
@@ -560,6 +669,11 @@
                         setLoading(false);
                     });
             }, []);
+
+            const handleImageError = async () => {
+                const webImageUrl = await fetchCelebImageUrl(name);
+                setImageUrl(webImageUrl);
+            };
 
             React.useEffect(() => {
                 fetchCelebDetails(name);
@@ -604,13 +718,10 @@
                         <div>
                             <div className="bg-dark-card rounded-lg border border-gray-800 h-full p-4">
                                 <img 
-                                    src={`assets/img/${name}.jpg`}
+                                    src={imageUrl}
                                     alt={name}
                                     className="w-full h-[300px] md:h-full object-cover rounded-lg"
-                                    onError={(e) => {
-                                        e.target.onerror = null;
-                                        e.target.src = 'https://i.pinimg.com/736x/1b/2e/31/1b2e314e767a957a44ed8f992c6d9098.jpg';
-                                    }}
+                                    onError={handleImageError}
                                 />
                             </div>
                         </div>
@@ -1161,6 +1272,8 @@
             const [error, setError] = React.useState(null);
             const chartRef = React.useRef(null);
             const chartInstance = React.useRef(null);
+            const [imageUrl1, setImageUrl1] = React.useState(`assets/img/${celeb1}.jpg`);
+            const [imageUrl2, setImageUrl2] = React.useState(`assets/img/${celeb2}.jpg`);
 
             // Fetch both celebs' details
             React.useEffect(() => {
@@ -1218,6 +1331,16 @@
                     setLoading(false);
                 });
             }, [celeb1, celeb2]);
+
+            const handleImageError1 = async () => {
+                const webImageUrl = await fetchCelebImageUrl(celeb1);
+                setImageUrl1(webImageUrl);
+            };
+
+            const handleImageError2 = async () => {
+                const webImageUrl = await fetchCelebImageUrl(celeb2);
+                setImageUrl2(webImageUrl);
+            };
 
             React.useEffect(() => {
                 if (history1 && history2 && chartRef.current) {
@@ -1396,13 +1519,10 @@
                         <div className="bg-dark-card rounded-lg border border-gray-800 p-4 flex flex-col">
                             <div className="flex-1 h-[300px] md:h-auto">
                                 <img 
-                                    src={`assets/img/${celeb1}.jpg`}
+                                    src={imageUrl1}
                                     alt={celeb1}
                                     className="w-full h-full object-cover rounded-lg"
-                                    onError={(e) => {
-                                        e.target.onerror = null;
-                                        e.target.src = 'https://i.pinimg.com/736x/1b/2e/31/1b2e314e767a957a44ed8f992c6d9098.jpg';
-                                    }}
+                                    onError={handleImageError1}
                                 />
                             </div>
                             <div className="mt-3 space-y-2">
@@ -1536,13 +1656,10 @@
                         <div className="bg-dark-card rounded-lg border border-gray-800 p-4 flex flex-col">
                             <div className="flex-1 h-[300px] md:h-auto">
                                 <img 
-                                    src={`assets/img/${celeb2}.jpg`}
+                                    src={imageUrl2}
                                     alt={celeb2}
                                     className="w-full h-full object-cover rounded-lg"
-                                    onError={(e) => {
-                                        e.target.onerror = null;
-                                        e.target.src = 'https://i.pinimg.com/736x/1b/2e/31/1b2e314e767a957a44ed8f992c6d9098.jpg';
-                                    }}
+                                    onError={handleImageError2}
                                 />
                             </div>
                             <div className="mt-3 space-y-2">
