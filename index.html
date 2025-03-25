@@ -1286,6 +1286,9 @@
                 setForm2(null);
                 setLoading(true);
                 setError(null);
+                // Reset image URLs when celebs change
+                setImageUrl1(`assets/img/${celeb1}.jpg`);
+                setImageUrl2(`assets/img/${celeb2}.jpg`);
 
                 Promise.all([
                     fetch('./rankings.json').then(res => res.json()),
