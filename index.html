@@ -534,19 +534,25 @@
             const [details, setDetails] = React.useState(null);
             const [loading, setLoading] = React.useState(true);
             const [error, setError] = React.useState(null);
+            const [form, setForm] = React.useState(null);
 
             const fetchCelebDetails = React.useCallback((celebName) => {
                 setLoading(true);
                 setError(null);
-                fetch('./rankings.json')
-                    .then(response => {
-                        if (!response.ok) throw new Error('Failed to fetch rankings');
-                        return response.json();
+                Promise.all([
+                    fetch('./rankings.json'),
+                    fetch('./form.json')
+                ])
+                    .then(([rankingsRes, formRes]) => {
+                        if (!rankingsRes.ok) throw new Error('Failed to fetch rankings');
+                        if (!formRes.ok) throw new Error('Failed to fetch form');
+                        return Promise.all([rankingsRes.json(), formRes.json()]);
                     })
-                    .then(data => {
-                        const celebData = data[celebName];
+                    .then(([rankings, formData]) => {
+                        const celebData = rankings[celebName];
                         if (!celebData) throw new Error('Celebrity not found');
                         setDetails(celebData);
+                        setForm(formData[celebName] || []);
                         setLoading(false);
                     })
                     .catch(err => {
@@ -564,14 +570,14 @@
                 const handlePopState = () => {
                     const params = new URLSearchParams(window.location.search);
                     const newName = params.get('name');
-                    if (newName) {
+                    if (newName && newName !== name) {
                         fetchCelebDetails(newName);
                     }
                 };
 
                 window.addEventListener('popstate', handlePopState);
                 return () => window.removeEventListener('popstate', handlePopState);
-            }, [fetchCelebDetails]);
+            }, [fetchCelebDetails, name]);
 
             if (loading) return <div className="py-12 px-4 text-center"><p className="text-xl">Loading details...</p></div>;
             if (error) return (
@@ -653,6 +659,26 @@
                                             <div className="p-3 bg-gray-800/30 rounded-lg">
                                                 <div className="text-sm text-gray-400">Avg Opponent Rating</div>
                                                 <div className="text-lg text-white">{details.opp}</div>
+                                            </div>
+
+                                            {/* Recent Form */}
+                                            <div className="col-span-2 mt-2">
+                                                <div className="text-sm text-gray-400 mb-2">Recent Form</div>
+                                                <div className="flex gap-1.5">
+                                                    {form && form.slice().reverse().map(([battleId, result], index) => (
+                                                        <a
+                                                            key={battleId}
+                                                            href={`https://reddit.com/r/celebbattles/${battleId}`}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="w-4 h-4 rounded-full cursor-pointer transition-transform hover:scale-110"
+                                                            style={{
+                                                                backgroundColor: result === 1 ? '#22c55e' : result === 0 ? '#ef4444' : '#eab308'
+                                                            }}
+                                                            title={`${result === 1 ? 'Win' : result === 0 ? 'Loss' : 'Draw'}`}
+                                                        />
+                                                    ))}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1129,6 +1155,8 @@
             const [details2, setDetails2] = React.useState(null);
             const [history1, setHistory1] = React.useState(null);
             const [history2, setHistory2] = React.useState(null);
+            const [form1, setForm1] = React.useState(null);
+            const [form2, setForm2] = React.useState(null);
             const [loading, setLoading] = React.useState(true);
             const [error, setError] = React.useState(null);
             const chartRef = React.useRef(null);
@@ -1136,11 +1164,22 @@
 
             // Fetch both celebs' details
             React.useEffect(() => {
+                // Reset states when celebs change
+                setDetails1(null);
+                setDetails2(null);
+                setHistory1(null);
+                setHistory2(null);
+                setForm1(null);
+                setForm2(null);
+                setLoading(true);
+                setError(null);
+
                 Promise.all([
                     fetch('./rankings.json').then(res => res.json()),
-                    fetch('./rating_histories.json').then(res => res.json())
+                    fetch('./rating_histories.json').then(res => res.json()),
+                    fetch('./form.json').then(res => res.json())
                 ])
-                .then(([rankings, histories]) => {
+                .then(([rankings, histories, formData]) => {
                     const celebData1 = rankings[celeb1];
                     const celebData2 = rankings[celeb2];
                     
@@ -1150,6 +1189,8 @@
 
                     setDetails1(celebData1);
                     setDetails2(celebData2);
+                    setForm1(formData[celeb1] || []);
+                    setForm2(formData[celeb2] || []);
 
                     // Filter out null/undefined values for both celebs
                     const validDataPoints = histories.time_axis.map((time, index) => ({
@@ -1376,6 +1417,22 @@
                                 >
                                     {celeb1}
                                 </a>
+                                {/* Recent Form */}
+                                <div className="flex justify-center gap-1.5">
+                                    {form1 && form1.slice().reverse().map(([battleId, result], index) => (
+                                        <a
+                                            key={battleId}
+                                            href={`https://reddit.com/r/celebbattles/${battleId}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="w-3 h-3 rounded-full cursor-pointer transition-transform hover:scale-110"
+                                            style={{
+                                                backgroundColor: result === 1 ? '#22c55e' : result === 0 ? '#ef4444' : '#eab308'
+                                            }}
+                                            title={`${result === 1 ? 'Win' : result === 0 ? 'Loss' : 'Draw'}`}
+                                        />
+                                    ))}
+                                </div>
                                 <CompareWith currentCeleb={celeb1} otherCeleb={celeb2} position="left" />
                             </div>
                         </div>
@@ -1500,6 +1557,22 @@
                                 >
                                     {celeb2}
                                 </a>
+                                {/* Recent Form */}
+                                <div className="flex justify-center gap-1.5">
+                                    {form2 && form2.slice().reverse().map(([battleId, result], index) => (
+                                        <a
+                                            key={battleId}
+                                            href={`https://reddit.com/r/celebbattles/${battleId}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="w-3 h-3 rounded-full cursor-pointer transition-transform hover:scale-110"
+                                            style={{
+                                                backgroundColor: result === 1 ? '#22c55e' : result === 0 ? '#ef4444' : '#eab308'
+                                            }}
+                                            title={`${result === 1 ? 'Win' : result === 0 ? 'Loss' : 'Draw'}`}
+                                        />
+                                    ))}
+                                </div>
                                 <CompareWith currentCeleb={celeb2} otherCeleb={celeb1} position="right" />
                             </div>
                         </div>
