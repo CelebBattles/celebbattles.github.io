@@ -639,6 +639,7 @@
             const [error, setError] = React.useState(null);
             const [form, setForm] = React.useState(null);
             const [imageUrl, setImageUrl] = React.useState(`assets/img/${name}.jpg`);
+            const [rankings, setRankings] = React.useState(null);
 
             // Update imageUrl when name changes
             React.useEffect(() => {
@@ -657,11 +658,12 @@
                         if (!formRes.ok) throw new Error('Failed to fetch form');
                         return Promise.all([rankingsRes.json(), formRes.json()]);
                     })
-                    .then(([rankings, formData]) => {
-                        const celebData = rankings[celebName];
+                    .then(([rankingsData, formData]) => {
+                        const celebData = rankingsData[celebName];
                         if (!celebData) throw new Error('Celebrity not found');
                         setDetails(celebData);
                         setForm(formData[celebName] || []);
+                        setRankings(rankingsData);
                         setLoading(false);
                     })
                     .catch(err => {
@@ -869,6 +871,26 @@
                                             <div className="mt-4">
                                                 <div className="text-sm text-gray-400 mb-2">Quick Compare</div>
                                                 <CompareWith currentCeleb={name} />
+                                            </div>
+
+                                            {/* Random Celebrity Button */}
+                                            <div className="mt-4">
+                                                <button
+                                                    onClick={() => {
+                                                        if (rankings) {
+                                                            const allCelebs = Object.keys(rankings);
+                                                            const randomCeleb = allCelebs[Math.floor(Math.random() * allCelebs.length)];
+                                                            window.history.pushState({}, '', `?page=details&name=${encodeURIComponent(randomCeleb)}`);
+                                                            window.dispatchEvent(new PopStateEvent('popstate'));
+                                                        }
+                                                    }}
+                                                    className="w-full px-3 py-2 text-sm rounded-lg border border-gray-700 bg-dark-card text-white hover:bg-gray-800/50 transition-colors flex items-center justify-center gap-2"
+                                                >
+                                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                                    </svg>
+                                                    Random Celebrity
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
