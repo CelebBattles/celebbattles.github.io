@@ -713,6 +713,12 @@
             const [bestOpp, bestBattles] = details.best.split(',');
             const [worstOpp, worstBattles, worstLosses] = details.worst.split(',');
 
+            // Calculate correct wins for most frequent opponent
+            const freqTotalBattles = parseInt(freqBattles);
+            const freqOppWins = parseInt(freqWins);
+            const freqActualWins = freqTotalBattles - freqOppWins;
+            const freqWinPercentage = ((freqActualWins/freqTotalBattles)*100).toFixed(1);
+
             return (
                 <div className="max-w-7xl mx-auto py-8 px-4">
                     <div className="grid md:grid-cols-3 gap-8">
@@ -817,7 +823,7 @@
                                                             {freqOpp}
                                                         </a>
                                                         <div className="text-sm text-gray-400 mt-1">
-                                                            {freqBattles} battles, {freqWins} wins ({((freqWins/freqBattles)*100).toFixed(1)}%)
+                                                            {freqBattles} battles, {freqActualWins} wins ({freqWinPercentage}%)
                                                         </div>
                                                     </div>
                                                 </div>
